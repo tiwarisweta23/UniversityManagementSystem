@@ -1,0 +1,68 @@
+# Copyright (c) 2016 SpronQ
+# This docker-compose file composed the core of the Cafienne Case File Engine
+#
+# This compose will work with docker 1.11+ and docker-compose 1.7+
+#
+# To run, call:
+#   $ docker-compose up
+#
+version: '2'
+services:
+  cafienne-ui:
+    image: spronq/test:cafienneui-master
+    container_name: cafienne-ui
+    expose:
+      - 80
+    ports:
+      - "8081:80"
+    hostname: cafienne-ui
+    networks:
+      - "cafienne_nw"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - cafienne
+    links:
+      - cafienne
+      - elasticsearch
+  cafienne:
+    image: spronq/test:cafienne-master
+    container_name: cafienne
+    expose:
+      - 9999
+      - 18082
+    ports:
+      - "9999:9999"
+      - "18082:18082"
+    hostname: cafienne
+    networks:
+      - "cafienne_nw"
+    environment:
+      - CAFIENNE_HOME=/cafienne
+      - CAFIENNE_CONF=/cafienne/conf
+    volumes:
+      - ./cafienne/journal:/cafienne/journal
+      - ../deployments/definitions:/cafienne/data/definitions
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+  elasticsearch:
+    image: spronq/test:elasticsearch-head
+    container_name: elastic
+    environment:
+      - "ES_JAVA_OPTS=-Des.cluster.name=cafienne"
+    expose:
+      - 9200
+      - 9300
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    hostname: elastic
+    networks:
+      - "cafienne_nw"
+    volumes:
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
+networks:
+  cafienne_nw:
+    driver: bridge
