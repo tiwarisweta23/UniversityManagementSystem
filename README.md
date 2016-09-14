@@ -3,11 +3,6 @@
 This repository allows you to setup a Cafienne demo environment based on docker images
 of Cafienne, Cafienne-UI and the underlying ElasticSearch storage engine.
 
-Please read the following documents:
-
--
-- [Running the Cafienne CMMN modeler](documentation/modeler.md)
-
 ## Prerequisites
 
 To be able to run this environment, you need to have access to some repositories on Github

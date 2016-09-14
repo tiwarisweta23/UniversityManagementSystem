@@ -4,8 +4,8 @@ This is a short "manual" to run a cafienne dev environment in docker.
 
 ## Docker images
 
-The images used in this configuration are stored in the SpronQ/test docker
-repository on docker hub. To be able to pull these images, you need to request
+> NOTE: The images used in this configuration are stored in the SpronQ/test docker
+repository on Docker Hub. To be able to pull these images, you need to request
 access from SpronQ.
 
 
