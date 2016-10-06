@@ -1,0 +1,26 @@
+<humantask id="id_H7qA" name="AanvraagControlerenIndienen" description="" isBlocking="true">
+    <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+    <input name="Aanvraag" id="Aanvraag"/>
+      <output name="Aanvraag" id="Aanvraag"/>
+      <task-model>
+      {
+  "schema":{
+    "title": "Aanvraag",
+    "type": "object",
+    "required": ["Aanvraag"],
+    
+    "properties":{
+      "Aanvraag":{"title": "Uw aanvraag",
+             "type":"object",
+             "properties":{
+               "Naam":{"type":"string",
+                      "title":"Naam"},
+               "Kenteken":{"type":"string",
+                      "title":"Kenteken (zonder streepjes)"}
+             }}
+    }
+  }
+}  </task-model>
+  <parameterMapping sourceRef="Aanvraag" targetRef="Aanvraag" />
+  </cafienne:implementation>
+</humantask>
