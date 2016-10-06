@@ -24,7 +24,7 @@
                 <planItem id="cm_cs59h_524" name="GBA check" definitionRef="pid_cm_cs59h_524"/>
                 <planItem id="cm_cszDO_628" name="RDW check" definitionRef="pid_cm_cszDO_628"/>
             </stage>
-            <humanTask id="pid_cm_cs59h_524" name="GBA check" isBlocking="true" performerRef="role_csMa5_1" humanTaskRef="gba.humantask">
+            <humanTask id="pid_cm_cs59h_524" name="GBA check" isBlocking="true" humanTaskRef="gba.humantask">
                 <inputs id="inTP_cm_csmQr_563_1" name="Aanvraag" bindingRef="cfi_cszhG_0"/>
                 <outputs id="outTP_cm_csJM1_641_0" name="Checks" bindingRef="cfi_cszDO_1"/>
                 <extensionElements mustUnderstand="false"
@@ -33,7 +33,7 @@
                     <parameterMapping id="outPM_cm_csJM1_641_0" sourceRef="Checks" targetRef="outTP_cm_csJM1_641_0"/>
                 </extensionElements>
             </humanTask>
-            <humanTask id="pid_cm_cszDO_628" name="RDW check" isBlocking="true" performerRef="role_csMa5_1" humanTaskRef="rdw.humantask">
+            <humanTask id="pid_cm_cszDO_628" name="RDW check" isBlocking="true" humanTaskRef="rdw.humantask">
                 <inputs id="inTP_cm_csAPK_643_0" name="Aanvraag" bindingRef="cfi_cszhG_0"/>
                 <outputs id="outTP_cm_csJM1_643_0" name="Checks" bindingRef="cfi_cszDO_1"/>
                 <extensionElements mustUnderstand="false"
@@ -49,7 +49,7 @@
                     <standardEvent>occur</standardEvent>
                 </planItemOnPart>
             </sentry>
-            <humanTask id="pid_cm_cszhG_4" name="Aanvraag Controleren en inzien" isBlocking="true" performerRef="role_csMa5_0" humanTaskRef="aanvraagcontrolerenindienen.humantask">
+            <humanTask id="pid_cm_cszhG_4" name="Aanvraag Controleren en inzien" isBlocking="true" humanTaskRef="aanvraagcontrolerenindienen.humantask">
                 <inputs id="inTP_cm_cse5p_8_1" name="Aanvraag" bindingRef="cfi_cszhG_0"/>
                 <outputs id="outTP_cm_csGxg_1802_1" name="Aanvraag" bindingRef="cfi_cszhG_0"/>
                 <extensionElements mustUnderstand="false"

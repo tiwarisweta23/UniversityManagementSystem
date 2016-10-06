@@ -3,8 +3,11 @@
         <CMMNShape cmmnElementRef="cm_ParkeerVergunning.case_ParkeerVergunning_0" name="ParkeerVergunning">
             <Bounds x="35" y="20" width="734" height="459"/>
         </CMMNShape>
-        <CMMNShape cmmnElementRef="cm_cszhG_4" name="Aanvraag Controleren en inzien">
-            <Bounds x="80" y="91" width="209" height="60"/>
+        <CMMNShape cmmnElementRef="cm_csGxg_1811" name="Aanvraag annuleren">
+            <Bounds x="82" y="380" width="32" height="32"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csGxg_1812">
+            <Bounds x="92" y="469" width="12" height="20"/>
         </CMMNShape>
         <CMMNShape cmmnElementRef="cm_cszDO_631" name="Aanvraag checken ">
             <Bounds x="371" y="78" width="342" height="140"/>
@@ -12,14 +15,11 @@
         <CMMNShape cmmnElementRef="cm_cszDO_628" name="RDW check">
             <Bounds x="553" y="112" width="100" height="60"/>
         </CMMNShape>
-        <CMMNShape cmmnElementRef="cm_csGxg_1811" name="Aanvraag annuleren">
-            <Bounds x="82" y="380" width="32" height="32"/>
-        </CMMNShape>
-        <CMMNShape cmmnElementRef="cm_csGxg_1812">
-            <Bounds x="92" y="469" width="12" height="20"/>
-        </CMMNShape>
         <CMMNShape cmmnElementRef="cm_cs59h_524" name="GBA check">
-            <Bounds x="413" y="113" width="100" height="60"/>
+            <Bounds x="413" y="112" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cszhG_4" name="Aanvraag Controleren en inzien">
+            <Bounds x="80" y="91" width="209" height="60"/>
         </CMMNShape>
         <CMMNEdge sourceCMMNElementRef="cm_csGxg_1812" targetCMMNElementRef="cm_csGxg_1811"/>
     </CMMNDiagram>
