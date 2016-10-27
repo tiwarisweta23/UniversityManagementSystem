@@ -4,12 +4,12 @@
 # This compose will work with docker 1.11+ and docker-compose 1.7+
 #
 # To run, call:
-#   $ docker-compose up
+#   $ docker-compose -f cafienne-demo.yml up
 #
 version: '2'
 services:
   cafienne-ui:
-    image: spronq/test:cafienneui-master
+    image: cafienne/ui:latest
     container_name: cafienne-ui
     expose:
       - 80
@@ -25,8 +25,25 @@ services:
     links:
       - cafienne
       - elasticsearch
+  cafienne-admin-ui:
+    image: cafienne/admin-ui:latest
+    container_name: cafienne-admin-ui
+    expose:
+      - 80
+    ports:
+      - "8082:80"
+    hostname: cafienne-admin-ui
+    networks:
+      - "cafienne_nw"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - cafienne
+    links:
+      - cafienne
+      - elasticsearch
   cafienne:
-    image: spronq/test:cafienne-master
+    image: cafienne/engine:latest
     container_name: cafienne
     expose:
       - 9999
@@ -38,17 +55,18 @@ services:
     networks:
       - "cafienne_nw"
     environment:
-      - CAFIENNE_HOME=/cafienne
-      - CAFIENNE_CONF=/cafienne/conf
+      - CAFIENNE_HOME=/opt/cafienne
+      - CAFIENNE_CONF=/opt/cafienne/conf
     volumes:
-      - ./cafienne/journal:/cafienne/journal
-      - ../deployments/definitions:/cafienne/data/definitions
+      - ./cafienne/journal:/opt/cafienne/journal
+      - ../deployments/definitions:/opt/cafienne/definitions
+      - ../deployments/conf:/opt/cafienne/conf
     depends_on:
       - elasticsearch
     links:
       - elasticsearch
   elasticsearch:
-    image: spronq/test:elasticsearch-head
+    image: cafienne/elasticsearch:2-head
     container_name: elastic
     environment:
       - "ES_JAVA_OPTS=-Des.cluster.name=cafienne"
