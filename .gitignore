@@ -63,3 +63,4 @@ local.properties
 # Docker data
 docker/elasticsearch/
 docker/cafienne/
+docker/cassandra/

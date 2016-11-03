@@ -1,0 +1,242 @@
+<definitions>
+    <caseFileItemDefinition definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" name="Greeting">
+        <property name="Message" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
+        <property name="To" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
+        <property name="From" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
+    </caseFileItemDefinition>
+    <caseFileItemDefinition definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" name="Response">
+        <property name="Message" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
+        <property name="Date" type="http://www.omg.org/spec/CMMN/PropertyType/date" />
+        <property name="Time" type="http://www.omg.org/spec/CMMN/PropertyType/time" />
+        <property name="SomeBoolean" type="http://www.omg.org/spec/CMMN/PropertyType/boolean" />
+    </caseFileItemDefinition>
+    <case description="Hello World" id="helloworld.case.case_HelloWorld" name="HelloWorld">
+        <caseFileModel>
+            <caseFileItem definitionRef="Greeting" id="cfi_csVQy_0" multiplicity="ExactlyOne" name="Greeting" />
+            <caseFileItem definitionRef="Response" id="cfi_csVQy_1" multiplicity="ExactlyOne" name="Response" />
+        </caseFileModel>
+        <casePlanModel autoComplete="true" id="cm_HelloWorld.case_HelloWorld_0" name="HelloWorld">
+            <planItem definitionRef="pid_cm_csVQy_167" id="cm_csVQy_167" name="Receive Greeting and Send response" />
+            <humanTask id="pid_cm_csVQy_167" isBlocking="true" name="Receive Greeting and Send response">
+                <inputs bindingRef="cfi_csVQy_0" id="inTP_cm_cs2F1_174_1" name="Greeting" />
+                <outputs bindingRef="cfi_csVQy_1" id="outTP_cm_cs2F1_174_1" name="Response" />
+                <extensionElements mustUnderstand="false" xmlns:cafienne="org.cafienne">
+                    <cafienne:implementation class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" description="Sends a response back to the initiator of the hello world case" name="SendResponse" xmlns:cafienne="org.cafienne">
+                        <input id="Greeting" name="Greeting" />
+                        <input id="DueDate" name="DueDate" />
+                        <output id="Response" name="Response" />
+                        <input id="_o7pM_Assignee" name="Assignee" />
+                        <task-model>{
+	"schema" : {
+		"title" : "You have received a greeting",
+		"type" : "object",
+		"required" : [
+			"Response"
+		],
+		"properties" : {
+			"Greeting" : {
+				"title" : " ",
+				"type" : "object",
+				"properties" : {
+					"Message" : {
+						"type" : "string"
+					}
+				}
+			},
+			"Response" : {
+				"title" : "Your response",
+				"type" : "object",
+				"properties" : {
+					"Message" : {
+						"type" : "string",
+						"title" : "Your response message"
+					},
+					"Date" : {
+						"type" : "string",
+						"format" : "date",
+						"title" : "Pick a date"
+					},
+					"Time" : {
+						"type" : "string",
+						"format" : "time",
+						"title" : "Pick a time"
+					},
+					"SomeBoolean" : {
+						"type" : "boolean",
+						"title" : "Check this"
+					}
+				}
+			}
+		}
+	},
+	"uiSchema" : {
+       	"ui:order": [ "Greeting", "Response" ],
+		"Greeting" : {
+			"Message" : {
+				"ui:widget" : "textarea",
+				"ui:readonly" : true
+			},
+			"To" : {
+				"ui:readonly" : true
+			}
+		},
+		"Response" : {
+			"Message" : {
+				"ui:widget" : "textarea"
+			}
+		}
+	}
+}
+</task-model>
+                        <parameterMapping id="inPM_cm_cshJq_4_0" sourceRef="inTP_cm_cs2F1_174_1" targetRef="Greeting" />
+                        <parameterMapping id="inPM_cm_cshJq_4_1" sourceRef="inTP_cm_cs2F1_174_1" targetRef="DueDate">
+                            <transformation language="spel">
+                                <body>
+                                    T(java.time.Instant).now()
+                                </body>
+                            </transformation>
+                        </parameterMapping>
+                        <parameterMapping id="inPM_cm_csKUc_208_2" sourceRef="inTP_cm_cs2F1_174_1" targetRef="_o7pM_Assignee">
+                            <transformation language="spel">
+                                <body>
+                                    Greeting.To
+                                </body>
+                            </transformation>
+                        </parameterMapping>
+                        <parameterMapping id="outPM_cm_csuYs_174_0" sourceRef="Response" targetRef="outTP_cm_cs2F1_174_1" />
+                    </cafienne:implementation>
+                </extensionElements>
+            </humanTask>
+            <planItem definitionRef="pid_cm_cs3hg_196" entryCriteriaRefs="cm_cs3hg_198" id="cm_cs3hg_196" name="Read response" />
+            <sentry id="cm_cs3hg_198">
+                <planItemOnPart id="ref_id_cm_csVQy_167" sourceRef="cm_csVQy_167">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <humanTask id="pid_cm_cs3hg_196" isBlocking="true" name="Read response">
+                <inputs bindingRef="cfi_csVQy_1" id="inTP_cm_cs3hg_196_0" name="Response" />
+                <inputs id="inTP_cm_cs3hg_196_1" name="DueDate" />
+                <inputs bindingRef="cfi_csVQy_0" id="inTP_cm_cs3hg_196_2" name="Greeting" />
+                <extensionElements mustUnderstand="false" xmlns:cafienne="org.cafienne">
+                    <cafienne:implementation class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" xmlns:cafienne="org.cafienne">
+                        <input id="Response" name="Response" />
+                        <input id="DueDate" name="DueDate" />
+                        <input id="_VOzX_Assignee" name="Assignee" />
+                        <task-model>
+			{
+				"schema": {
+					"title": "Read response",
+					"type": "object",
+					"properties": {
+						"Response": {
+							"title": "Your response",
+							"type": "object",
+							"properties": {
+								"Message": {
+									"type": "string",
+									"title": "Your response message"
+								},
+								"Date": {
+									"type": "string",
+									"format": "date",
+									"title": "Pick a date"
+								},
+								"Time": {
+									"type": "string",
+									"format": "time",
+									"title": "Pick a time"
+								},
+								"SomeBoolean": {
+									"type": "boolean",
+									"title": "Check this"
+								}
+							}
+						}
+					}
+				},
+				"uiSchema": {
+					"Message": {
+						"ui:widget": "textarea"
+					}
+				}
+			}
+		</task-model>
+                        <parameterMapping id="inPM_cm_cs3hg_196_0" sourceRef="inTP_cm_cs3hg_196_0" targetRef="Response" />
+                        <parameterMapping id="inPM_cm_cs3hg_196_1" sourceRef="inTP_cm_cs3hg_196_1" targetRef="DueDate">
+                            <transformation language="spel">
+                                <body>
+                                    T(java.time.Instant).now()
+                                </body>
+                            </transformation>
+                        </parameterMapping>
+                        <parameterMapping id="inPM_cm_cs3hg_196_2" sourceRef="inTP_cm_cs3hg_196_2" targetRef="_VOzX_Assignee">
+                            <transformation language="spel">
+                                <body>
+                                    Greeting.From
+                                </body>
+                            </transformation>
+                        </parameterMapping>
+                    </cafienne:implementation>
+                </extensionElements>
+            </humanTask>
+        </casePlanModel>
+        <caseRoles description="admin of the world" id="role_csT3f_0" name="ADMIN" />
+        <input bindingRef="cfi_csVQy_0" id="csVQy_inCPs_0" name="Greeting" />
+        <extensionElements>
+            <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema": {
+    "title": "Greeting",
+    "type": "object",
+    "required": [
+      "Greeting"
+    ],
+    "properties": {
+      "Greeting": {
+        "title": "Your greeting to the World",
+        "type": "object",
+        "properties": {
+          "Message": {
+            "type": "string",
+            "title": "Your message"
+          },
+          "To": {
+            "type": "string",
+            "title": "To whom?"
+          },
+          "From": {
+            "type": "string",
+            "title": "From",
+            "default": "$CURRENT_USER"
+          }
+        }
+      }
+    }
+  },
+  "uiSchema": {
+    "Greeting": {
+      "Message": {"ui:widget": "textarea"},
+      "To" :  {"ui:widget": "user-selector", "multiSelect" : false, "role" : "Receiver"},
+      "From" :  {"ui:widget": "user-selector", "multiSelect" : false, "role" : "Sender"}
+    }
+  }
+}
+            </cafienne:start-case-model>
+        </extensionElements>
+    </case>
+    <CMMNDI>
+        <CMMNDiagram>
+            <CMMNShape cmmnElementRef="cm_HelloWorld.case_HelloWorld_0" name="HelloWorld">
+                <Bounds height="333" width="632" x="9" y="9" />
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="cm_csVQy_167" name="Receive Greeting and&#xA;Send response">
+                <Bounds height="68" width="122" x="65" y="80" />
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="cm_cs3hg_196" name="Read response">
+                <Bounds height="60" width="100" x="316" y="84" />
+            </CMMNShape>
+            <CMMNShape cmmnElementRef="cm_cs3hg_198">
+                <Bounds height="20" width="12" x="310" y="106" />
+            </CMMNShape>
+        </CMMNDiagram>
+    </CMMNDI>
+</definitions>

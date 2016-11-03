@@ -2,25 +2,16 @@
 
 This is a short "manual" to run a cafienne dev environment in docker.
 
-## Docker images
-
-> NOTE: The images used in this configuration are stored in the SpronQ/test docker
-repository on Docker Hub. To be able to pull these images, you need to request
-access from SpronQ.
-
-
-## Running the environment
 
 ### Running for the first time:
 
 To run the environment (with docker-compose) use the following steps:
 
 1. Open a terminal and change into the docker folder: `cd docker`
-2. Login to docker hub: `docker login`
-3. Run the environment by running: `docker-compose -f cafienne-demo.yml up`
+2. Run the environment by running: `docker-compose -f cafienne-demo.yml up`
 
-The last command will pull the required images from docker hub and create the
-required containers and start them. This may take a while, be patient!
+This will pull the required images from docker hub, create the required containers and start them.
+It therefore may take a while ...
 
 ### Stopping and/or removing the environment
 

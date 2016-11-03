@@ -1,0 +1,124 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm_travelrequest.case_travelrequest_0" name="Travel Request">
+            <Bounds x="65" y="85" width="1296" height="641"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_215" name="Select approver manually">
+            <Bounds x="106" y="397" width="167" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs9Q0_205" name="View Travel request">
+            <Bounds x="106" y="132" width="141" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs9Q0_207" name="Approve and Generate Travel Order">
+            <Bounds x="863" y="122" width="458" height="234"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_208" name="Approve Travel request">
+            <Bounds x="886" y="161" width="168" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_210" name="Create Travel Order">
+            <Bounds x="884" y="258" width="166" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs3yg_479" name="Budget allocation">
+            <Bounds x="1095" y="257" width="144" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs3yg_487" name="Send Notification to Approver">
+            <Bounds x="1102" y="163" width="190" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_213" name="Request Submitted">
+            <Bounds x="114" y="234" width="121" height="40"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_219" name="Approved">
+            <Bounds x="883" y="395" width="142" height="40"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_220" name="Disapproved">
+            <Bounds x="1166" y="394" width="100" height="40"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_223" name="Travel Arrangements">
+            <Bounds x="794" y="471" width="350" height="214"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_226" name="Email travel office">
+            <Bounds x="814" y="506" width="158" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csjTZ_640" name="Generate Travel Order">
+            <Bounds x="817" y="588" width="142" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csjTZ_642" name="Email Travel Order">
+            <Bounds x="990" y="587" width="128" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_228" name="Send approval to requestor">
+            <Bounds x="1165" y="481" width="148" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csEae_323" name="Cancel Travel request">
+            <Bounds x="148" y="627" width="32" height="32"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csSAF_389" name="Check prerequisites">
+            <Bounds x="280" y="127" width="485" height="233"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csSAF_392" name="Check travel requirements">
+            <Bounds x="321" y="165" width="174" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs3yg_484" name="Arrange Visa and ESTA">
+            <Bounds x="544" y="163" width="172" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_212">
+            <Bounds x="963" y="248" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs3yg_481">
+            <Bounds x="1089" y="278" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs3yg_489">
+            <Bounds x="1096" y="179" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csGrn_388">
+            <Bounds x="166" y="224" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_222">
+            <Bounds x="948" y="385" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_221">
+            <Bounds x="1214" y="384" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_225">
+            <Bounds x="955" y="461" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cskek_645">
+            <Bounds x="1138" y="563" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csjTZ_644">
+            <Bounds x="984" y="610" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_css9P_478">
+            <Bounds x="1193" y="471" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csgxw_230">
+            <Bounds x="1217" y="471" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs3yg_483">
+            <Bounds x="315" y="184" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_cs3yg_486">
+            <Bounds x="538" y="183" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="cm_csEae_324">
+            <Bounds x="160" y="716" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="cm_csgxw_222" targetCMMNElementRef="cm_cs9Q0_207"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csgxw_221" targetCMMNElementRef="cm_cs9Q0_207"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csgxw_220" targetCMMNElementRef="cm_csgxw_230"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csgxw_219" targetCMMNElementRef="cm_css9P_478">
+            <waypoint x="1110" y="415"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="cm_csEae_323" targetCMMNElementRef="cm_csEae_324"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csgxw_219" targetCMMNElementRef="cm_csgxw_225"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csgxw_226" targetCMMNElementRef="cm_cskek_645"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csSAF_389" targetCMMNElementRef="cm_csgxw_222"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csjTZ_642" targetCMMNElementRef="cm_cskek_645"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csjTZ_640" targetCMMNElementRef="cm_csjTZ_644"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csgxw_210" targetCMMNElementRef="cm_cs3yg_481"/>
+        <CMMNEdge sourceCMMNElementRef="cm_csgxw_208" targetCMMNElementRef="cm_csgxw_212"/>
+    </CMMNDiagram>
+    <validation>
+        <hiddennotices/>
+        <hiddenproblems/>
+    </validation>
+</CMMNDI>

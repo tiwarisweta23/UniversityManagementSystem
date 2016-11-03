@@ -79,11 +79,9 @@ services:
     depends_on:
       - elasticsearch
       - cassandra
-      - mailcatcher
     links:
       - elasticsearch
       - cassandra
-      - mailcatcher
   elasticsearch:
     image: cafienne/elasticsearch:2-head-mapper
     container_name: elastic
@@ -114,17 +112,6 @@ services:
       - "cafienne_nw"
     volumes:
      - ./cassandra/data:/var/lib/cassandra
-  mailcatcher:
-    image: schickling/mailcatcher:latest
-    container_name: mailcatcher
-    expose:
-      - 1080
-      - 1025
-    ports:
-      - "1080:1080"
-    hostname: mailcatcher
-    networks:
-      - cafienne_nw
 networks:
   cafienne_nw:
     driver: bridge
