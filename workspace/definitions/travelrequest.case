@@ -1,85 +1,26 @@
 <definitions>
-    <caseFileItemDefinition name="TravelRequest" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified"/>
-    <caseFileItemDefinition name="TravelDetails" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
-        <property name="DepartureDate" type="http://www.omg.org/spec/CMMN/PropertyType/date"/>
-        <property name="ReturnDate" type="http://www.omg.org/spec/CMMN/PropertyType/date"/>
-        <property name="DeparturePoint" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="ReturnPoint" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="AdvanceRequired" type="http://www.omg.org/spec/CMMN/PropertyType/boolean"/>
-        <property name="Purpose" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="Justification" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="Comments" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-    </caseFileItemDefinition>
-    <caseFileItemDefinition name="Destination" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
-        <property name="City" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="Country" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-    </caseFileItemDefinition>
-    <caseFileItemDefinition name="TravellerDetails" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
-        <property name="RequestDate" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="Requestor" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="PointOfContact" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-    </caseFileItemDefinition>
-    <caseFileItemDefinition name="Traveller" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
-        <property name="Name" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="Email" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="Nationality" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="PassNo" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="isVisaDocumentsAvailable" type="http://www.omg.org/spec/CMMN/PropertyType/boolean"/>
-        <property name="isESTAApplicationSubmitted" type="http://www.omg.org/spec/CMMN/PropertyType/boolean"/>
-    </caseFileItemDefinition>
-    <caseFileItemDefinition name="TravelOrderDoc" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified"/>
-    <caseFileItemDefinition name="Meeting" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
-        <property name="StartDate" type="http://www.omg.org/spec/CMMN/PropertyType/date"/>
-        <property name="StartTime" type="http://www.omg.org/spec/CMMN/PropertyType/time"/>
-        <property name="EndDate" type="http://www.omg.org/spec/CMMN/PropertyType/date"/>
-        <property name="EndTime" type="http://www.omg.org/spec/CMMN/PropertyType/time"/>
-        <property name="DurationIncLeave" type="http://www.omg.org/spec/CMMN/PropertyType/integer"/>
-    </caseFileItemDefinition>
-    <caseFileItemDefinition name="Transport" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
-        <property name="ModeOfTransport" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="POMVMake" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="POMVLicense" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-    </caseFileItemDefinition>
-    <caseFileItemDefinition name="Project" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
-        <property name="IMIS-code" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="IMIS-activity-code" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="Manager" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="ChiefServiceLine" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="Assistant" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-    </caseFileItemDefinition>
-    <caseFileItemDefinition name="Approval" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
-        <property name="Status" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="ApprovedBy" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-        <property name="ApprovalTimestamp" type="http://www.omg.org/spec/CMMN/PropertyType/dateTime"/>
-        <property name="Motivation" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-    </caseFileItemDefinition>
-    <caseFileItemDefinition name="TravelStatus" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
-        <property name="ApproverAvailable" type="http://www.omg.org/spec/CMMN/PropertyType/boolean"/>
-        <property name="POAvailable" type="http://www.omg.org/spec/CMMN/PropertyType/boolean"/>
-        <property name="Approver" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
-    </caseFileItemDefinition>
     <case id="travelrequest.case.case_travelrequest" name="travelrequest" description="Travel Request">
         <caseFileModel>
-            <caseFileItem id="cfi_csKsD_0" name="TravelRequest" multiplicity="ExactlyOne" definitionRef="TravelRequest">
+            <caseFileItem id="cfi_csKsD_0" name="TravelRequest" multiplicity="ExactlyOne" definitionRef="travelrequest.cfid">
                 <children>
-                    <caseFileItem id="cfi_csDtI_11" name="TravelDetails" multiplicity="ExactlyOne" definitionRef="TravelDetails">
+                    <caseFileItem id="cfi_csDtI_11" name="TravelDetails" multiplicity="ExactlyOne" definitionRef="traveldetails.cfid">
                         <children>
-                            <caseFileItem id="cfi_csDtI_12" name="Destination" multiplicity="ZeroOrMore" definitionRef="Destination"/>
+                            <caseFileItem id="cfi_csDtI_12" name="Destination" multiplicity="ZeroOrMore" definitionRef="destination.cfid"/>
                         </children>
                     </caseFileItem>
-                    <caseFileItem id="cfi_cs6RF_10" name="TravellerDetails" multiplicity="ExactlyOne" definitionRef="TravellerDetails">
+                    <caseFileItem id="cfi_cs6RF_10" name="TravellerDetails" multiplicity="ExactlyOne" definitionRef="travellerdetails.cfid">
                         <children>
-                            <caseFileItem id="cfi_cs6RF_11" name="Traveller" multiplicity="ZeroOrMore" definitionRef="Traveller"/>
+                            <caseFileItem id="cfi_cs6RF_11" name="Traveller" multiplicity="ZeroOrMore" definitionRef="traveller.cfid"/>
                         </children>
                     </caseFileItem>
-                    <caseFileItem id="cfi_csO0y_8" name="TravelOrderDoc" multiplicity="ExactlyOne" definitionRef="TravelOrderDoc"/>
-                    <caseFileItem id="cfi_cs9Q0_4" name="Meeting" multiplicity="ExactlyOne" definitionRef="Meeting"/>
-                    <caseFileItem id="cfi_cs9Q0_3" name="Transport" multiplicity="ExactlyOne" definitionRef="Transport"/>
-                    <caseFileItem id="cfi_cs9Q0_5" name="Project" multiplicity="ExactlyOne" definitionRef="Project"/>
+                    <caseFileItem id="cfi_csO0y_8" name="TravelOrderDoc" multiplicity="ExactlyOne" definitionRef="travelorderdoc.cfid"/>
+                    <caseFileItem id="cfi_cs9Q0_4" name="Meeting" multiplicity="ExactlyOne" definitionRef="meeting.cfid"/>
+                    <caseFileItem id="cfi_cs9Q0_3" name="Transport" multiplicity="ExactlyOne" definitionRef="transport.cfid"/>
+                    <caseFileItem id="cfi_cs9Q0_5" name="Project" multiplicity="ExactlyOne" definitionRef="project.cfid"/>
                 </children>
             </caseFileItem>
-            <caseFileItem id="cfi_csgxw_6" name="Approval" multiplicity="ZeroOrOne" definitionRef="Approval"/>
-            <caseFileItem id="cfi_csgxw_7" name="TravelStatus" multiplicity="ZeroOrOne" definitionRef="TravelStatus"/>
+            <caseFileItem id="cfi_csgxw_6" name="Approval" multiplicity="ZeroOrOne" definitionRef="approval.cfid"/>
+            <caseFileItem id="cfi_csgxw_7" name="TravelStatus" multiplicity="ZeroOrOne" definitionRef="travelstatus.cfid"/>
         </caseFileModel>
         <casePlanModel id="cm_travelrequest.case_travelrequest_0" name="Travel Request" autoComplete="true" exitCriteriaRefs="cm_csEae_324">
             <planningTable id="pt_cm_undefined_3">
