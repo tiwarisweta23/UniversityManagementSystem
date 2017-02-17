@@ -1,19 +1,8 @@
 <definitions>
-    <caseFileItemDefinition definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" name="Greeting">
-        <property name="Message" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
-        <property name="To" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
-        <property name="From" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
-    </caseFileItemDefinition>
-    <caseFileItemDefinition definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" name="Response">
-        <property name="Message" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
-        <property name="Date" type="http://www.omg.org/spec/CMMN/PropertyType/date" />
-        <property name="Time" type="http://www.omg.org/spec/CMMN/PropertyType/time" />
-        <property name="SomeBoolean" type="http://www.omg.org/spec/CMMN/PropertyType/boolean" />
-    </caseFileItemDefinition>
     <case description="Hello World" id="helloworld.case.case_HelloWorld" name="HelloWorld">
         <caseFileModel>
-            <caseFileItem definitionRef="Greeting" id="cfi_csVQy_0" multiplicity="ExactlyOne" name="Greeting" />
-            <caseFileItem definitionRef="Response" id="cfi_csVQy_1" multiplicity="ExactlyOne" name="Response" />
+            <caseFileItem definitionRef="greeting.cfid" id="cfi_csVQy_0" multiplicity="ExactlyOne" name="Greeting" />
+            <caseFileItem definitionRef="response.cfid" id="cfi_csVQy_1" multiplicity="ExactlyOne" name="Response" />
         </caseFileModel>
         <casePlanModel autoComplete="true" id="cm_HelloWorld.case_HelloWorld_0" name="HelloWorld">
             <planItem definitionRef="pid_cm_csVQy_167" id="cm_csVQy_167" name="Receive Greeting and Send response" />
@@ -223,6 +212,17 @@
             </cafienne:start-case-model>
         </extensionElements>
     </case>
+    <caseFileItemDefinition definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="greeting.cfid" name="Greeting">
+        <property name="Message" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
+        <property name="To" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
+        <property name="From" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
+    </caseFileItemDefinition>
+    <caseFileItemDefinition definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified" id="response.cfid" name="Response">
+        <property name="Message" type="http://www.omg.org/spec/CMMN/PropertyType/string" />
+        <property name="Date" type="http://www.omg.org/spec/CMMN/PropertyType/date" />
+        <property name="Time" type="http://www.omg.org/spec/CMMN/PropertyType/time" />
+        <property name="SomeBoolean" type="http://www.omg.org/spec/CMMN/PropertyType/boolean" />
+    </caseFileItemDefinition>
     <CMMNDI>
         <CMMNDiagram>
             <CMMNShape cmmnElementRef="cm_HelloWorld.case_HelloWorld_0" name="HelloWorld">
