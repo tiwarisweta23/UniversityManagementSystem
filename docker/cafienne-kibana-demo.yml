@@ -4,7 +4,7 @@
 # This compose will work with docker 1.11+ and docker-compose 1.7+
 #
 # To run, call:
-#   $ docker-compose -f cafienne-demo.yml up
+#   $ docker-compose -f cafienne-kibana-demo.yml up
 #
 version: '2.1'
 services:
@@ -95,6 +95,23 @@ services:
       - elasticsearch
       - cassandra
       - mailcatcher
+  kibana:
+    image: kibana:4
+    container_name: kibana
+    environment:
+      ELASTICSEARCH_URL: http://elastic:9200
+    expose:
+      - 5601
+    ports:
+      - "5601:5601"
+    hostname: kibana
+    networks:
+      - "cafienne_nw"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    links:
+      - elasticsearch
   elasticsearch:
     image: cafienne/elasticsearch:2-head-mapper
     container_name: elastic

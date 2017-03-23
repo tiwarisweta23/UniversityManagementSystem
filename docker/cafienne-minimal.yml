@@ -4,9 +4,9 @@
 # This compose will work with docker 1.11+ and docker-compose 1.7+
 #
 # To run, call:
-#   $ docker-compose -f cafienne-demo.yml up
+#   $ docker-compose -f cafienne-minimal.yml up
 #
-version: '2'
+version: '2.1'
 services:
   cmmn-modeler:
     image: cafienne/modeler:latest
@@ -22,7 +22,8 @@ services:
       - ./../deployments/definitions:/usr/src/app/repository_deploy
       - ./../workspace/definitions:/usr/src/app/repository
     depends_on:
-      - cafienne
+      cafienne:
+        condition: service_healthy
   cafienne-ui:
     image: cafienne/ui:latest
     container_name: cafienne-ui
@@ -36,7 +37,8 @@ services:
     environment:
       - NODE_ENV=production
     depends_on:
-      - cafienne
+      cafienne:
+        condition: service_healthy
     links:
       - cafienne
       - elasticsearch
@@ -53,7 +55,8 @@ services:
     environment:
       - NODE_ENV=production
     depends_on:
-      - cafienne
+      cafienne:
+        condition: service_healthy
     links:
       - cafienne
       - elasticsearch
@@ -67,6 +70,11 @@ services:
       - "9999:9999"
       - "18082:18082"
     hostname: cafienne
+    healthcheck:
+      test: ["CMD", "wget", "-s", "http://localhost:18082/api-docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     networks:
       - "cafienne_nw"
     environment:
@@ -77,8 +85,10 @@ services:
       - ./../deployments/definitions:/opt/cafienne/definitions
       - ./../deployments/conf:/opt/cafienne/conf
     depends_on:
-      - elasticsearch
-      - cassandra
+      elasticsearch:
+        condition: service_healthy
+      cassandra:
+        condition: service_healthy
     links:
       - elasticsearch
       - cassandra
@@ -98,8 +108,11 @@ services:
       - "cafienne_nw"
     volumes:
       - ./elasticsearch/data:/usr/share/elasticsearch/data
-    depends_on:
-      - cassandra
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cat/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
   cassandra:
     image: cassandra:latest
     container_name: cassandra
@@ -108,6 +121,11 @@ services:
     ports:
       - "9042:9042"
     hostname: cassandra
+    healthcheck:
+      test: ["CMD", "cqlsh", "--execute", "show version;quit"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     networks:
       - "cafienne_nw"
     volumes:
