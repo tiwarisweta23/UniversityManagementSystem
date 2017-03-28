@@ -40,3 +40,7 @@ In this environment, you can create new CMMN models and deploy them to the engin
 When you already have existing models built by the Cafienne CMMN modeler, you can simply deploy them to this
 environment by copying the build CMMN model XML file to the `deployments/definitions` folder in this repository.
 The Cafienne Demo environment picks up any valid model that is stored in this folder.
+
+## Help
+
+If you need help or encounter issues, you can search the [existing repository issues](https://github.com/cafienne/cafienne-demo/issues) or directly [create a new issue](https://github.com/cafienne/cafienne-demo/issues/new).
