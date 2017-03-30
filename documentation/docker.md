@@ -2,13 +2,20 @@
 
 This is a short "manual" to run a cafienne dev environment in docker.
 
+### Required versions
+
+To run the cafienne demo you need at least these versions:
+
+* Docker Engine 1.12.0+
+* Docker Compose 1.9.0+
 
 ### Running for the first time:
 
 To run the environment (with docker-compose) use the following steps:
 
 1. Open a terminal and change into the docker folder: `cd docker`
-2. Run the environment by running: `docker-compose -f cafienne-demo.yml up`
+2. Run `docker-compose -f cafienne-demo.yml pull` to pull the latest docker images
+3. Run the environment by running: `docker-compose -f cafienne-demo.yml up`
 
 This will pull the required images from docker hub, create the required containers and start them.
 It therefore may take a while ...
