@@ -21,6 +21,8 @@ services:
     volumes:
       - ./../deployments/definitions:/usr/src/app/repository_deploy
       - ./../workspace/definitions:/usr/src/app/repository
+    environment:
+      - CAFIENNE_API_URL=http://cafienne:18082
     depends_on:
       cafienne:
         condition: service_healthy
