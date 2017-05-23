@@ -9,10 +9,8 @@
             <humanTask id="pid_cm_csVQy_167" name="Receive Greeting and Send response" isBlocking="true">
                 <inputs id="inTP_cm_cs2F1_174_1" name="Greeting" bindingRef="cfi_csVQy_0"/>
                 <outputs id="outTP_cm_cs2F1_174_1" name="Response" bindingRef="cfi_csVQy_1"/>
-                <extensionElements mustUnderstand="false"
-                    xmlns:cafienne="org.cafienne">
-                    <cafienne:implementation
-                        xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="sendresponse.humantask">
+                <extensionElements mustUnderstand="false" xmlns:cafienne="org.cafienne">
+                    <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="sendresponse.humantask">
                         <parameterMapping id="inPM_cm_cshJq_4_0" sourceRef="inTP_cm_cs2F1_174_1" targetRef="Greeting"/>
                         <parameterMapping id="inPM_cm_cshJq_4_1" sourceRef="inTP_cm_cs2F1_174_1" targetRef="DueDate">
                             <transformation language="spel">
@@ -42,10 +40,8 @@
                 <inputs id="inTP_cm_cs3hg_196_0" name="Response" bindingRef="cfi_csVQy_1"/>
                 <inputs id="inTP_cm_cs3hg_196_1" name="DueDate"/>
                 <inputs id="inTP_cm_cs3hg_196_2" name="Greeting" bindingRef="cfi_csVQy_0"/>
-                <extensionElements mustUnderstand="false"
-                    xmlns:cafienne="org.cafienne">
-                    <cafienne:implementation
-                        xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="readresponse.humantask">
+                <extensionElements mustUnderstand="false" xmlns:cafienne="org.cafienne">
+                    <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="readresponse.humantask">
                         <parameterMapping id="inPM_cm_cs3hg_196_0" sourceRef="inTP_cm_cs3hg_196_0" targetRef="Response"/>
                         <parameterMapping id="inPM_cm_cs3hg_196_1" sourceRef="inTP_cm_cs3hg_196_1" targetRef="DueDate">
                             <transformation language="spel">
@@ -68,8 +64,7 @@
         <caseRoles id="role_csT3f_0" name="ADMIN" description="admin of the world"/>
         <input id="csVQy_inCPs_0" name="Greeting" bindingRef="cfi_csVQy_0"/>
         <extensionElements>
-            <cafienne:start-case-model
-                xmlns:cafienne="org.cafienne">{
+            <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
   "schema": {
     "title": "Greeting",
     "type": "object",
