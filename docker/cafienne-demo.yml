@@ -22,12 +22,12 @@ services:
       - ./../deployments/definitions:/usr/src/app/repository_deploy
       - ./../workspace/definitions:/usr/src/app/repository
     environment:
-      - CAFIENNE_API_URL=http://cafienne:18082
+      CAFIENNE_API_URL: ${CAFIENNE_API_URL:-http://cafienne:18082}
     depends_on:
       cafienne:
         condition: service_healthy
   cafienne-ui:
-    image: cafienne/ui:latest
+    image: sp-ontwikkel-docker-registry.external-cloud.nl:5000/vws/groei-cafienne-ui
     container_name: cafienne-ui
     expose:
       - 80
@@ -37,7 +37,9 @@ services:
     networks:
       - "cafienne_nw"
     environment:
-      - NODE_ENV=production
+      NODE_ENV: production
+      CAFIENNE_API_HOST: ${CAFIENNE_API_HOST:-cafienne}
+      CAFIENNE_API_PORT: ${CAFIENNE_API_PORT:-18082}
     depends_on:
       cafienne:
         condition: service_healthy
@@ -97,11 +99,35 @@ services:
       - elasticsearch
       - cassandra
       - mailcatcher
+  elasticsearch-head:
+    image: mobz/elasticsearch-head:5-alpine
+    container_name: es-head
+    hostname: es-head
+    ports:
+      - "9100:9100"
+    networks:
+      - "cafienne_nw"
+    links:
+      - elasticsearch
   elasticsearch:
-    image: cafienne/elasticsearch:2-head-mapper
+    image: spronq/pp2:pp2-es5.2.1-ingest-mapper-rvd
     container_name: elastic
     environment:
-      - "ES_JAVA_OPTS=-Des.cluster.name=cafienne"
+      - "cluster.name=cafienne"
+      - "bootstrap.memory_lock=true"
+      - "ES_JAVA_OPTS=-Xms4096m -Xmx4096m"
+      - "http.cors.enabled=true"
+      - "http.cors.allow-origin=*"
+      - "xpack.security.enabled=false"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+     - IPC_LOCK
     expose:
       - 9200
       - 9300
@@ -112,7 +138,7 @@ services:
     networks:
       - "cafienne_nw"
     volumes:
-      - ./elasticsearch/data:/usr/share/elasticsearch/data
+      - ./elasticsearch/es5:/usr/share/elasticsearch/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9200/_cat/health"]
       interval: 30s
@@ -143,6 +169,7 @@ services:
       - 1025
     ports:
       - "1080:1080"
+      - "1025:1025"
     hostname: mailcatcher
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:1080"]
