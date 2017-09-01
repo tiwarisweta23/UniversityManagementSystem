@@ -1,0 +1,27 @@
+# Copyright (c) 2016/2017 SpronQ
+# This docker-compose file composes the Travel Request demo
+#
+# This compose will work with docker 1.13.1+
+#
+# To run, call:
+#   $ docker-compose -f cmmn-modeler.yml up
+#
+version: '3.1'
+services:
+  cmmn-modeler:
+    image: cafienne/modeler:latest
+    expose:
+      - 3001
+    ports:
+      - "3001:3001"
+    hostname: modeler
+    networks:
+      - "dev"
+    volumes:
+      - ./target/definitions:/usr/src/app/repository_deploy
+      - ./src/definitions:/usr/src/app/repository
+    environment:
+      CAFIENNE_API_URL: ${CAFIENNE_API_URL:-http://cafienne:18082}
+networks:
+  dev:
+    driver: bridge

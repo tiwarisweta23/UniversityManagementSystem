@@ -22,10 +22,9 @@ After starting up de Cafienne Demo environment, the following URL allow you to a
 environment:
 
 - Cafienne task user interface: http://localhost:8081
-- Cafienne administration (user creation, case status overview): http://localhost:8082
 - Cafienne modeler environment: http://localhost:3001
 - Cafienne API (exposed through Swagger): http://localhost:18082
-- ElasticSearch head plugin: http://localhost:9200/_plugin/head
+- MailCatcher web UI: http://localhost:1080
 
 You can logon to the Cafienne UI by using `admin` for the username and password
 
