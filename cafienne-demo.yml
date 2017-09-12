@@ -1,0 +1,152 @@
+# Copyright (c) 2016/2017 SpronQ
+# This docker-compose file composes the Travel Request demo
+#
+# This compose will work with docker 1.13.1+
+#
+# To run, call:
+#   $ docker-compose -f cafienne-demo.yml up
+#
+version: '3.1'
+services:
+  # supporting containers
+  mailcatcher:
+    image: schickling/mailcatcher:latest
+    labels:
+      component: mta
+    hostname: mailcatcher
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:1080"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - dev
+    expose:
+      - 1025
+      - 1080
+    ports:
+      - "1080:1080"
+  elasticsearch:
+    image: cafienne/elasticsearch:es5.4.3-ingest-mapper
+    labels:
+      component: data-store
+    environment:
+      - "cluster.name=cafienne"
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "http.host=0.0.0.0"
+      - "http.cors.enabled=true"
+      - "http.cors.allow-origin=*"
+      - "xpack.security.enabled=false"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - dev
+    expose:
+      - 9200
+      - 9300
+    ports:
+      - "9200:9200"
+    hostname: elasticsearch
+    volumes:
+      - es-data:/usr/share/elasticsearch/data:rw   
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cat/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  cassandra:
+    image: cassandra:3.10
+    labels:
+      component: event-store
+    hostname: cassandra
+    networks:
+      - dev
+    expose:
+      - 9042
+    volumes:
+     - cs-data:/var/lib/cassandra    
+    healthcheck:
+      test: ["CMD", "cqlsh", "--execute", "show version;quit"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  # Cafienne containers    
+  cmmn-modeler:
+    image: cafienne/modeler:latest
+    ports:
+      - "3001:3001"
+    hostname: modeler
+    networks:
+      - dev
+    volumes:
+      - ./target/definitions:/usr/src/app/repository_deploy
+      - ./src/definitions:/usr/src/app/repository
+    environment:
+      CAFIENNE_API_URL: ${CAFIENNE_API_URL:-http://cafienne:18082}   
+    depends_on:
+      - cafienne
+    links:
+      - cafienne
+  cafienne-ui:
+    image: cafienne/ui:latest
+    labels: 
+      component: cafienne-ui
+    networks: 
+      - dev
+    ports:
+      - "8081:80"
+    hostname: cafienne-ui
+    environment:
+      NODE_ENV: production
+      CAFIENNE_API_HOST: ${CAFIENNE_API_HOST:-cafienne}
+      CAFIENNE_API_PORT: ${CAFIENNE_API_PORT:-18082}
+    healthcheck:
+      test: ["CMD", "wget", "-s", "http://localhost:8081/index.html"]
+      interval: 30s
+      timeout: 10s
+      retries: 6
+    depends_on:
+      - cafienne
+    links:
+      - cafienne
+  cafienne:
+    image: cafienne/engine:latest
+    labels:
+      component: case-engine
+    networks: 
+      - dev
+    expose:
+      - 18082
+    ports:
+      - "18082:18082"
+    hostname: cafienne
+    healthcheck:
+      test: ["CMD", "wget", "-s", "http://localhost:18082/api-docs/swagger.json"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    environment:
+      ES_HOST: ${ES_HOST:-elasticsearch://elasticsearch:9300}
+      CS_HOST: ${CS_HOST:-cassandra}
+    volumes:
+      - ./run/cafienne/journal:/opt/cafienne/journal
+      - ./target/definitions:/opt/cafienne/definitions
+      - ./src/conf:/opt/cafienne/conf
+    depends_on:
+      - elasticsearch
+      - cassandra
+      - mailcatcher
+    links:
+      - elasticsearch
+      - cassandra
+      - mailcatcher
+volumes:
+  es-data:
+    driver: local
+  cs-data:
+    driver: local
+networks:
+  dev:
+    driver: bridge
