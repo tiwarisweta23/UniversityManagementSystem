@@ -1147,11 +1147,7 @@ http://localhost/cases/%7B%23TestSuite%23caseInstanceId%7D/discretionaryitems
 <con:params/>
 <con:element>data</con:element>
 </con:representation>
-<<<<<<< HEAD:tests/TravelRequestTestCase.xml
-<con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:cas="http://localhost/cases">cas:Response</con:element></con:representation><con:request id="178dcc80-9701-4dda-a064-598c563da55f" mediaType="application/json" name="StartCase" postQueryString="false">
-=======
 <con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>text/plain; charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType xsi:nil="true"/><con:status>500</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request id="178dcc80-9701-4dda-a064-598c563da55f" mediaType="application/json" name="StartCase" postQueryString="false">
->>>>>>> master:workspace/test/TravelRequestTestCase.xml
 <con:settings>
 <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers"><xml-fragment/></con:setting>
 </con:settings>
@@ -2221,11 +2217,7 @@ http://localhost/cases/%7B%23TestSuite%23caseInstanceId%7D/discretionaryitems
 <con:params/>
 <con:element>data</con:element>
 </con:representation>
-<<<<<<< HEAD:tests/TravelRequestTestCase.xml
-<con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:request id="04a9bd3b-a23b-4080-b8bc-7d29d9f3440e" mediaType="application/json" name="Request 1" postQueryString="false">
-=======
 <con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:request id="04a9bd3b-a23b-4080-b8bc-7d29d9f3440e" mediaType="application/json" name="Request 1" postQueryString="false">
->>>>>>> master:workspace/test/TravelRequestTestCase.xml
 <con:settings>
 <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers"><xml-fragment/></con:setting>
 </con:settings>
@@ -2854,11 +2846,7 @@ http://localhost/cases/%7B%23TestSuite%23caseInstanceId%7D/discretionaryitems
 <con:params/>
 <con:element xmlns:cas="http://localhost/cases/caseInstanceId">cas:Response</con:element>
 </con:representation>
-<<<<<<< HEAD:tests/TravelRequestTestCase.xml
-<con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:cas="http://localhost/cases/caseInstanceId">cas:Response</con:element></con:representation><con:request id="f1ffcd8b-253f-49ff-96e6-a7283acc96d6" mediaType="application/json" name="Request 1">
-=======
 <con:representation type="FAULT"><con:mediaType>text/plain; charset=UTF-8</con:mediaType><con:status>500 503</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>text/plain; charset=UTF-8</con:mediaType><con:status>200</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:cas="http://localhost/cases/caseInstanceId">cas:Response</con:element></con:representation><con:request id="f1ffcd8b-253f-49ff-96e6-a7283acc96d6" mediaType="application/json" name="Request 1">
->>>>>>> master:workspace/test/TravelRequestTestCase.xml
 <con:settings/>
 <con:endpoint>http://localhost:18082</con:endpoint>
 <con:request/>
@@ -3125,7 +3113,7 @@ http://localhost/cases/%7B%23TestSuite%23caseInstanceId%7D/discretionaryitems
   
   
   
-  <con:interface xsi:type="con:RestService" id="80d070db-360a-4ea5-b398-cb9b0c034446" wadlVersion="http://wadl.dev.java.net/2009/02" name="Travel Test Cases" type="rest" definitionUrl="1730" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints/></con:interface><con:testSuite id="811bafd1-23dd-4c43-9624-ff45448dd760" name="_Utilities"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:properties/><con:testCase failOnError="true" failTestCaseOnErrors="true" id="cd4523c0-50c4-4704-8b32-a6932fae6bf1" keepSession="false" maxResults="0" name="ImportTestCases" searchProperties="true">
+  <con:testSuite id="811bafd1-23dd-4c43-9624-ff45448dd760" name="_Utilities"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:properties/><con:testCase failOnError="true" failTestCaseOnErrors="true" id="cd4523c0-50c4-4704-8b32-a6932fae6bf1" keepSession="false" maxResults="0" name="ImportTestCases" searchProperties="true">
   <con:description>Import testcases from disk.</con:description>
   <con:settings/>
   <con:testStep id="c7264e3d-fc6e-4b0c-9549-cc850cb3497b" name="create-soapui-projectfile" type="groovy">
@@ -4043,7 +4031,9 @@ testRunner.testCase.setPropertyValue("authHeader", headerValue.toString())</scri
   </con:testStep>
   <con:testStep id="aaf4db39-4820-4396-9afc-c0c24a2e0d30" name="Delay2" type="delay">
     <con:settings/>
-    <con:config><delay>2000</delay></con:config>
+    <con:config>
+      <delay>1000</delay>
+    </con:config>
   </con:testStep>
   <con:testStep id="c23dba52-862e-4c9b-9db3-758dcb3a8290" name="Get All Tasks For Personal Assistant" type="restrequest">
     <con:settings/>
@@ -4129,11 +4119,7 @@ testRunner.testCase.setPropertyValue("authHeader", headerValue.toString())</scri
         <con:request/>
         <con:originalUri>http://localhost/tasks/4d7470d3_7868_483d_9e56_2b08570c3896/claim</con:originalUri>
         <con:assertion id="43f04286-3e6e-4ffc-960a-06e279fc2642" name="Valid HTTP Status Codes" type="Valid HTTP Status Codes">
-<<<<<<< HEAD:tests/TravelRequestTestCase.xml
-          <con:configuration><codes>200,202</codes></con:configuration>
-=======
           <con:configuration><codes>202</codes></con:configuration>
->>>>>>> master:workspace/test/TravelRequestTestCase.xml
         </con:assertion>
         <con:credentials>
           <con:authType>No Authorization</con:authType>
@@ -4319,11 +4305,7 @@ testRunner.testCase.setPropertyValue("Case-Last-Modified", headerValue.toString(
   </con:testStep><con:properties>
     <con:property>
       <con:name>caseInstanceId</con:name>
-<<<<<<< HEAD:tests/TravelRequestTestCase.xml
-      <con:value>c154c759_671e_4da8_aa42_6a6d0d82f18c</con:value>
-=======
-      <con:value>663bdd3a_0454_4fc2_8173_4b09be3e6585</con:value>
->>>>>>> master:workspace/test/TravelRequestTestCase.xml
+      <con:value>4d36ca43_2fa2_4378_a281_b0f1b4118574</con:value>
     </con:property>
     <con:property>
       <con:name>planItemId</con:name>
@@ -4335,11 +4317,7 @@ testRunner.testCase.setPropertyValue("Case-Last-Modified", headerValue.toString(
     </con:property>
     <con:property>
       <con:name>authHeader</con:name>
-<<<<<<< HEAD:tests/TravelRequestTestCase.xml
-      <con:value>c3V6eTpQZXJzb25hbEFzc2lzdGFudDoxNDk5MjU1OTc5MDY5OiQyYSQxMCQ1VlFoejgvU2c1SGNhOUV2Ty5nZmR1WXBtclVFTzhiWjVKTXZRZGZtbGs2ZFgwU2VnOFdDZQ==</con:value>
-=======
-      <con:value>c3V6eTpQZXJzb25hbEFzc2lzdGFudCxSZXF1ZXN0b3I6MTUwMDkxMjY1ODc0MTokMmEkMTAkUmRRRVMuZHRRTm03TENycWZSZmxkLlBYZEZzb3hwenl1aWIvZXF6WWp3QncucmNBU1ltanE=</con:value>
->>>>>>> master:workspace/test/TravelRequestTestCase.xml
+      <con:value>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjE4MDgyLyIsInN1YiI6InN1enkiLCJyb2xlcyI6WyJQZXJzb25hbEFzc2lzdGFudCJdLCJpc3MiOiJjYWZpZW5uZSIsImV4cCI6MTUxMTM0MDE1NCwiaWF0IjoxNTExMzM2NTU0fQ.R6I1P_R483IUODSF7M5sopquGu20v1WuC3EokwV_48g</con:value>
     </con:property>
     <con:property>
       <con:name>Last-Modified</con:name>
@@ -4351,19 +4329,11 @@ testRunner.testCase.setPropertyValue("Case-Last-Modified", headerValue.toString(
     </con:property>
     <con:property>
       <con:name>Case-Last-Modified</con:name>
-<<<<<<< HEAD:tests/TravelRequestTestCase.xml
-      <con:value>2017-07-05T11:02:07.733758596Z;c154c759_671e_4da8_aa42_6a6d0d82f18c</con:value>
+      <con:value>2017-11-22T07:42:44.898532197Z;4d36ca43_2fa2_4378_a281_b0f1b4118574</con:value>
     </con:property>
     <con:property>
       <con:name>taskId</con:name>
-      <con:value>2f6aa455_75e7_4c55_90d8_f803673e009a</con:value>
-=======
-      <con:value>2017-07-24T15:11:01.306214152Z;663bdd3a_0454_4fc2_8173_4b09be3e6585</con:value>
-    </con:property>
-    <con:property>
-      <con:name>taskId</con:name>
-      <con:value>89ec17a6_8824_4a2a_9afc_9917ebe09394</con:value>
->>>>>>> master:workspace/test/TravelRequestTestCase.xml
+      <con:value>53e9290e_02a3_4572_a1fe_be79175d05fe</con:value>
     </con:property>
     <con:property>
       <con:name>userEventId</con:name>
