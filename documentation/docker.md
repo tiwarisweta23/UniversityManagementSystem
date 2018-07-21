@@ -10,6 +10,8 @@ To run the cafienne demo you need at least these versions:
 
 ### Running for the first time:
 
+Ensure your Docker is using at least 4G of memory (Docker -> Preferences... -> Advanced)
+
 To run the environment (with docker-compose) use the following steps:
 
 1. Open a terminal/command prompt

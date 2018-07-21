@@ -26,7 +26,7 @@ environment:
 - Cafienne API (exposed through Swagger): http://localhost:18082
 - MailCatcher web UI: http://localhost:1080
 
-You can logon to the Cafienne UI by using `admin` for the username and password
+You can logon to the Cafienne UI by using `admin` for the username and `cafienne` for the password
 
 ## Building and deploying a CMMN model
 
