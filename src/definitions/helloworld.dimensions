@@ -14,8 +14,4 @@
         </CMMNShape>
         <CMMNEdge sourceCMMNElementRef="cm_csVQy_167" targetCMMNElementRef="cm_cs3hg_198"/>
     </CMMNDiagram>
-    <validation>
-        <hiddennotices/>
-        <hiddenproblems/>
-    </validation>
 </CMMNDI>
