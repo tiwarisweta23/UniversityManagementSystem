@@ -1,0 +1,5 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="VerifyDetailsHumanTask" description="" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <task-model/>
+    </cafienne:implementation>
+</humantask>

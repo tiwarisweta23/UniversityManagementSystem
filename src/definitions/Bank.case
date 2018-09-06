@@ -1,0 +1,5 @@
+<case id="Bank.case" name="Bank" description="Bank" guid="_caGev">
+    <caseFileModel>
+        <caseFileItem id="_caGev_0" name="CustomerType" multiplicity="ExactlyOne" definitionRef="customertype.cfid"/>
+    </caseFileModel>
+</case>

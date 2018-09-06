@@ -1,0 +1,5 @@
+<caseFileItemDefinition name="tourdetails" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="Location" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="DateOfArrival" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="NumberOfDays" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

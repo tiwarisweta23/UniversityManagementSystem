@@ -1,0 +1,63 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="ValidateComplaint" description="ValidateComplaint" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <task-model>{
+  "schema": {
+    "title": "BankIncident",
+    "type": "object",
+    "required": [
+      "BankIncident"
+    ],
+    "properties": {
+      "BankIncident": {
+        "title": "BankIncident",
+        "type": "object",
+        "properties": {
+          "CustomerID": {
+            "type": "string",
+            "title": "Customer ID"
+          },
+          "ComplaintDetails": {
+            "type": "string",
+            "title": "Summary of Complaint"
+          },
+          "Category": {
+            "type": "string",
+            "title": "Category of complaint",
+            "enum": [
+              "Credit Card",
+              "Debit Card",
+              "Internet Banking"
+            ],
+            "enumNames": [
+              "Credit_card",
+              "Debit_card",
+              "Internet_banking"
+            ]
+          }
+        }
+      },
+      "ValidationResponse": {
+        "title": "ValidationResponse",
+        "type": "object",
+        "properties": {
+          "Status": {
+            "type": "string",
+            "title": "Enter the Status",
+            "enum": [
+              "Valid",
+              "Invalid"
+            ],
+            "enumNames": [
+              "Valid",
+              "Invalid"
+            ]
+
+          }
+        }
+      }
+    }
+
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

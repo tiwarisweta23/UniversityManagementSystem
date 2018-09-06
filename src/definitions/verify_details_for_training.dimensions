@@ -1,0 +1,20 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm__IM8U8_0" name="IncidentManagement">
+            <Bounds x="50" y="20" width="1150" height="830"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi__IM8U8_0" name="Verify and Assign&#10;">
+            <Bounds x="90" y="80" width="420" height="190"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__IM8U8_0" name="Verify Details">
+            <Bounds x="130" y="120" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_pt__IM8U8_0" name="Assign Incharge">
+            <Bounds x="330" y="160" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__IM8U8_0" name="Sentry_0">
+            <Bounds x="324" y="180" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__IM8U8_0" targetCMMNElementRef="crit__IM8U8_0"/>
+    </CMMNDiagram>
+</CMMNDI>

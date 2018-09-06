@@ -1,0 +1,50 @@
+<case id="BankIncident.case" name="BankIncident" description="IncidentManagementForBank" guid="_SdMKW">
+    <caseFileModel>
+        <caseFileItem id="_SdMKW_1" name="BankIncident" multiplicity="ExactlyOne" definitionRef="bankincident.cfid"/>
+        <caseFileItem id="_SdMKW_0" name="ValidationResponse" multiplicity="ExactlyOne" definitionRef="validationresponse.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__SdMKW_0" name="BankIncident" autoComplete="true"/>
+    <input id="_SdMKW_9" name="BankIncident" bindingRef="_SdMKW_1"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema": {
+    "title": "BankIncident",
+    "type": "object",
+    "required": [
+      "BankIncident"
+    ],
+    "properties": {
+      "BankIncident": {
+        "title": "BankIncident",
+        "type": "object",
+        "properties": {
+          "CustomerID": {
+            "type": "string",
+            "title": "Customer ID"
+          },
+          "ComplaintDetails": {
+            "type": "string",
+            "title": "Summary of Complaint"
+          },
+          "Category": {
+            "type": "string",
+            "title": "Category of complaint",
+            "enum": [
+              "Credit Card",
+              "Debit Card",
+              "Internet Banking"
+            ],
+            "enumNames": [
+              "Credit_card",
+              "Debit_card",
+              "Internet_banking"
+            ]
+          }
+        }
+      }
+    }
+
+  }
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

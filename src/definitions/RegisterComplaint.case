@@ -1,0 +1,65 @@
+<case id="BankIncident.case" name="BankIncident" description="IncidentManagementForBank" guid="_SdMKW">
+    <caseFileModel>
+        <caseFileItem id="_SdMKW_1" name="BankIncident" multiplicity="ExactlyOne" definitionRef="bankincident.cfid"/>
+        <caseFileItem id="_SdMKW_11" name="BankIncidentResponse" multiplicity="ExactlyOne" definitionRef="bankincidentresponse.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__SdMKW_0" name="BankIncident" autoComplete="true">
+        <planItem id="pi_ht__SdMKW_0" name="RegisterComplaint" definitionRef="ht__SdMKW_0"/>
+        <humanTask id="ht__SdMKW_0" name="RegisterComplaint" isBlocking="true">
+            <inputs id="_SdMKW_3" name="BankIncident"/>
+            <outputs id="_SdMKW_5" name="BankIncident"/>
+            <outputs id="_SdMKW_7" name="BankIncidentCategory"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="RegisterComplaint.humantask">
+                    <parameterMapping id="_SdMKW_4" sourceRef="_SdMKW_3" targetRef="_FDVn_BankIncident"/>
+                    <parameterMapping id="_SdMKW_6" sourceRef="_eDrB_BankIncident" targetRef="_SdMKW_5"/>
+                    <parameterMapping id="_SdMKW_8" sourceRef="_oZcU_BankIncidentCategory" targetRef="_SdMKW_7"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+    </casePlanModel>
+    <input id="_SdMKW_9" name="BankIncident" bindingRef="_SdMKW_1"/>
+    <input id="_SdMKW_0" name="BankIncidentResponse" bindingRef="_SdMKW_11"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema": {
+    "title": "BankIncident",
+    "type": "object",
+    "required": [
+      "BankIncident"
+    ],
+    "properties": {
+      "BankIncident": {
+        "title": "BankIncident",
+        "type": "object",
+        "properties": {
+          "CustomerID": {
+            "type": "string",
+            "title": "Customer ID"
+          },
+          "ComplaintDetails": {
+            "type": "string",
+            "title": "Summary of Complaint"
+          },
+          "Category": {
+            "type": "string",
+            "title": "Category of complaint",
+            "enum": [
+              "Credit Card",
+              "Debit Card",
+              "Internet Banking"
+            ],
+            "enumNames": [
+              "Credit_card",
+              "Debit_card",
+              "Internet_banking"
+            ]
+          }
+        }
+      }
+    }
+
+  }
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

@@ -1,0 +1,79 @@
+<case id="TravelManagement.case" name="TravelManagement" description="TravelManagement" guid="_cjnK7">
+    <caseFileModel/>
+    <caseRoles id="_cjnK7_0" name="Traveler" description="One who wants to book a guide"/>
+    <caseRoles id="_cjnK7_1" name="Guide" description="One who host Travellers"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+	"schema": {
+		"title": "TravelManagement",
+		"type": "object",
+		"required": ["TourDetails"],
+		"properties": {
+			"TourDetails": {
+				"title": "T",
+				"type": "object",
+				"properties": {
+					"Title": {
+						"type": "string",
+						"title": "Title of Incident"
+					},
+					"Description": {
+						"type": "string",
+						"title": "Full Detail of Incident"
+					},
+					"Type": {
+						"title": "Incident Type",
+						"type": "string",
+						"enumNames": [
+							"Return Order",
+							"Report missing item",
+							"Change delivery Address",
+							"Cancel Order"
+						],
+						"enum": [
+							"Return_order",
+							"Report_missing_item",
+							"Change_delivery_address",
+							"Cancel_order"
+						]
+					}
+				}
+			},
+          ,
+			"Incident_Response": {
+				"title": "Incident",
+				"type": "object",
+				"properties": {
+					"Status": {
+						"title": "Enter the status",
+						"type": "string",
+						"enumNames": [
+							"Valid",
+							"Needs_further_analysis",
+							"Invalid"
+						],
+						"enum": [
+							"Valid",
+							"Needs further analysis",
+							"Invalid"
+						]
+
+					}
+
+
+				}
+
+
+			}
+
+
+		}
+
+
+	}
+
+
+
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

@@ -1,0 +1,74 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="InProgress_human_task" description="work_on_incident_human_task" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <task-model>{
+	"schema": {
+		"title": "Work on Incident",
+		"type": "object",
+		"required": "Incident_Response",
+		"properties": {
+			"Incident": {
+				"title": "Incident Details",
+				"type": "object",
+				"properties": {
+					"Title": {
+						"type": "string",
+						"title": "Title of Incident"
+					},
+					"Description": {
+						"type": "string",
+						"title": "Full Detail of Incident"
+					},
+					"Type": {
+						"title": "Incident Type",
+						"type": "string",
+						"enumNames": [
+							"Return Order",
+							"Report missing item",
+							"Change delivery Address",
+							"Cancel Order"
+						],
+						"enum": [
+							"Return_order",
+							"Report_missing_item",
+							"Change_delivery_address",
+							"Cancel_order"
+						]
+					}
+				}
+
+			},
+			"Incident_Response": {
+				"title": "Incident Response",
+				"type": "object",
+				"properties": {
+					"Status": {
+						"title": "Enter the status",
+						"type": "string",
+						"enumNames": [
+							"Valid",
+							"Needs_further_analysis",
+							"Invalid"
+						],
+						"enum": [
+							"Valid",
+							"Needs further analysis",
+							"Invalid",
+                          	"Solved"
+						]
+
+					}
+
+
+				}
+
+
+			}
+
+
+
+		}
+
+	}
+}</task-model>
+    </cafienne:implementation>
+</humantask>

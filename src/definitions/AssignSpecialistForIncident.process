@@ -1,0 +1,14 @@
+<process name="AssignSpecialistForIncident" description="Assign Specialist for Incident">
+    <input id="_gtF0_incident_type" name="incident_type"/>
+    <output id="_nrf4_specialist" name="specialist"/>
+    <extensionElements>
+        <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.instance.process.http.HTTPCallDefinition" async="true">
+            <url>http://host.docker.internal:3333/usermappings/${incident_type}</url>
+            <method>GET</method>
+            <http-headers>
+                <http-header name="Content-Type">application/json</http-header>
+            </http-headers>
+            <parameterMapping sourceRef="responsePayload" targetRef="specialist"/>
+        </cafienne:implementation>
+    </extensionElements>
+</process>

@@ -1,0 +1,44 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="verify_details_for_training" description="" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_EwTX_IncidentDetails" name="IncidentDetails"/>
+        <output id="_sqTs_IncidentDetails" name="IncidentDetails"/>
+        <output id="_HmQU_Incident_Response" name="Incident_Response"/>
+        <task-model>{
+	"schema": {
+		"title": "Incident",
+		"type": "object",
+		"required": "Incident",
+		"properties": {
+			"Incident": {
+				"title": "Incident",
+				"type": "object",
+				"properties": {
+					"Title": {
+						"type": "string",
+						"title": "Title of Incident"
+					},
+					"Description": {
+						"type": "string",
+						"title": "Full Detail of Incident"
+					},
+					"Type": {
+						"title": "Incident Type",
+						"type": "string",
+						"enum": [
+							"Credit_Card",
+							"Debit_Card",
+							"InternetBanking"
+						],
+						"enumNames": [
+							"Credit Card",
+							"Debit Card",
+							"Internet Banking"
+						]
+					}
+				}
+			}
+		}
+	}
+}</task-model>
+    </cafienne:implementation>
+</humantask>

@@ -1,0 +1,44 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="RegisterComplaint" description="RegisterComplaint" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <task-model>{
+  "schema": {
+    "title": "BankIncident",
+    "type": "object",
+    "required": [
+      "BankIncident"
+    ],
+    "properties": {
+      "BankIncident": {
+        "title": "BankIncident",
+        "type": "object",
+        "properties": {
+          "CustomerID": {
+            "type": "string",
+            "title": "Customer ID"
+          },
+          "ComplaintDetails": {
+            "type": "string",
+            "title": "Summary of Complaint"
+          },
+          "Category": {
+            "type": "string",
+            "title": "Category of complaint",
+            "enum": [
+              "Credit Card",
+              "Debit Card",
+              "Internet Banking"
+            ],
+            "enumNames": [
+              "Credit_card",
+              "Debit_card",
+              "Internet_banking"
+            ]
+          }
+        }
+      }
+    }
+
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

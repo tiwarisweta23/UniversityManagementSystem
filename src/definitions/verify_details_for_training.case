@@ -1,0 +1,109 @@
+<case id="IncidentManagement.case" name="IncidentManagement" description="Incident Management Learning" guid="_IM8U8">
+    <caseFileModel>
+        <caseFileItem id="_IM8U8_6" name="IncidentDetails" multiplicity="ExactlyOne" definitionRef="incidentdetails.cfid"/>
+        <caseFileItem id="_IM8U8_10" name="Incident_Response" multiplicity="ExactlyOne" definitionRef="incident_response.cfid"/>
+        <caseFileItem id="_IM8U8_45" name="specialist" multiplicity="ExactlyOne" definitionRef="specialist.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__IM8U8_0" name="IncidentManagement" autoComplete="true">
+        <planItem id="pi__IM8U8_0" name="Verify and Assign " definitionRef="_IM8U8_0"/>
+        <humanTask id="ht__IM8U8_0" name="Verify Details" isBlocking="true">
+            <inputs id="_IM8U8_3" name="IncidentDetails" bindingRef="_IM8U8_6"/>
+            <outputs id="_IM8U8_5" name="IncidentDetails" bindingRef="_IM8U8_6"/>
+            <outputs id="_IM8U8_9" name="Incident_Response" bindingRef="_IM8U8_10"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="verify_details_for_training.humantask">
+                    <parameterMapping id="_IM8U8_4" sourceRef="_IM8U8_3" targetRef="_EwTX_IncidentDetails"/>
+                    <parameterMapping id="_IM8U8_8" sourceRef="_sqTs_IncidentDetails" targetRef="_IM8U8_5"/>
+                    <parameterMapping id="_IM8U8_11" sourceRef="_HmQU_Incident_Response" targetRef="_IM8U8_9"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <processTask id="pt__IM8U8_0" name="Assign Incharge" isBlocking="true" processRef="AssignSpecialistForIncident.process">
+            <inputs id="_IM8U8_15" name="incident_type" bindingRef="_IM8U8_6"/>
+            <outputs id="_IM8U8_17" name="specialist" bindingRef="_IM8U8_45"/>
+            <parameterMapping id="_IM8U8_16" sourceRef="_IM8U8_15" targetRef="_gtF0_incident_type">
+                <transformation id="_IM8U8_19" name="Expression_0" language="spel">
+                    <body>
+                        <![CDATA[incident_type.Type]]>
+                    </body>
+                </transformation>
+            </parameterMapping>
+            <parameterMapping id="_IM8U8_18" sourceRef="_nrf4_specialist" targetRef="_IM8U8_17"/>
+        </processTask>
+        <stage id="_IM8U8_0" name="Verify and Assign " autoComplete="true">
+            <planItem id="pi_ht__IM8U8_0" name="Verify Details" definitionRef="ht__IM8U8_0"/>
+            <planItem id="pi_pt__IM8U8_0" name="Assign Incharge" definitionRef="pt__IM8U8_0" entryCriteriaRefs="crit__IM8U8_0"/>
+            <sentry id="crit__IM8U8_0" name="Sentry_0">
+                <planItemOnPart id="_IM8U8_20" name="PlanItemOnPart_0" sourceRef="pi_ht__IM8U8_0">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+    </casePlanModel>
+    <caseRoles id="_IM8U8_12" name="Validator" description="To Validate complaint"/>
+    <caseRoles id="_IM8U8_13" name="Resolver" description="To Resolve Issues"/>
+    <input id="_IM8U8_7" name="IncidentDetails" bindingRef="_IM8U8_6"/>
+    <input id="_IM8U8_28" name="Incident_Response" bindingRef="_IM8U8_10"/>
+    <input id="_IM8U8_29" name="specialist" bindingRef="_IM8U8_45"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+	"schema": {
+		"title": "Incident",
+		"type": "object",
+		"required": "Incident",
+		"properties": {
+			"Incident": {
+				"title": "Incident",
+				"type": "object",
+				"properties": {
+					"Title": {
+						"type": "string",
+						"title": "Title of Incident"
+					},
+					"Description": {
+						"type": "string",
+						"title": "Full Detail of Incident"
+					},
+					"Type": {
+						"title": "Incident Type",
+						"type": "string",
+						"enumNames": [
+							"Return Order",
+							"Report missing item",
+							"Change delivery Address",
+							"Cancel Order"
+						],
+						"enum": [
+							"Return_order",
+							"Report_missing_item",
+							"Change_delivery_address",
+							"Cancel_order"
+						]
+					}
+				}
+			},
+			"Incident_Response": {
+				"title": "Incident",
+				"type": "object",
+				"properties": {
+					"Status": {
+						"title": "Enter the status",
+						"type": "string",
+						"enumNames": [
+							"Valid",
+							"Needs_further_analysis",
+							"Invalid"
+						],
+						"enum": [
+							"Valid",
+							"Needs further analysis",
+							"Invalid"
+						]
+					}
+				}
+			}
+		}
+	}
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

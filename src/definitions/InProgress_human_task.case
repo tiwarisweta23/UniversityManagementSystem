@@ -1,0 +1,57 @@
+<case id="IncidentManagement.case" name="IncidentManagement" description="Incident Management Learning" guid="_IM8U8">
+    <caseFileModel>
+        <caseFileItem id="_IM8U8_6" name="IncidentDetails" multiplicity="ExactlyOne" definitionRef="incidentdetails.cfid"/>
+        <caseFileItem id="_IM8U8_10" name="Incident_Response" multiplicity="ExactlyOne" definitionRef="incident_response.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__IM8U8_0" name="IncidentManagement" autoComplete="true">
+        <planItem id="pi__IM8U8_3" name="Verify and Assign" definitionRef="_IM8U8_3"/>
+        <planItem id="pi__IM8U8_15" name="In progress" definitionRef="_IM8U8_15" entryCriteriaRefs="crit__IM8U8_0"/>
+        <sentry id="crit__IM8U8_0" name="Sentry_0">
+            <planItemOnPart id="_IM8U8_18" name="PlanItemOnPart_0" sourceRef="pi__IM8U8_3">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <humanTask id="ht__IM8U8_0" name="Verify Details" isBlocking="true">
+            <inputs id="_IM8U8_9" name="Incident" bindingRef="_IM8U8_6"/>
+            <outputs id="_IM8U8_12" name="Incident_Response" bindingRef="_IM8U8_10"/>
+            <outputs id="_IM8U8_14" name="Incident" bindingRef="_IM8U8_6"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="verify_details_for_training.humantask">
+                    <parameterMapping id="_IM8U8_8" sourceRef="_IM8U8_9" targetRef="_WQuM_Incident"/>
+                    <parameterMapping id="_IM8U8_11" sourceRef="_F0kp_Incident_Response" targetRef="_IM8U8_12"/>
+                    <parameterMapping id="_IM8U8_13" sourceRef="_HvX1_Incident" targetRef="_IM8U8_14"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <stage id="_IM8U8_3" name="Verify and Assign" autoComplete="true">
+            <planItem id="pi_ht__IM8U8_0" name="Verify Details" definitionRef="ht__IM8U8_0"/>
+        </stage>
+        <stage id="_IM8U8_15" name="In progress" autoComplete="true"/>
+    </casePlanModel>
+    <input id="_IM8U8_7" name="Incident" bindingRef="_IM8U8_6"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+	"schema": {
+		"title": "Incident",
+		"type": "object",
+      	"required":"Incident",
+		"properties": {
+		"Incident": {
+			"title": "Incident",
+			"type": "object",
+			"properties": {
+				"Title": {
+					"type": "string",
+					"title": "Title of Incident"
+				},
+				"Description": {
+					"type": "string",
+					"title": "Full Detail of Incident"
+				}
+			}
+		}
+	}
+
+}}</cafienne:start-case-model>
+    </extensionElements>
+</case>

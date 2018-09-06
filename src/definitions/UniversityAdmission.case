@@ -1,0 +1,29 @@
+<case id="UniversityAdmission.case" name="UniversityAdmission" description="UniversityAdmission" guid="_n8OpB">
+    <caseFileModel>
+        <caseFileItem id="_n8OpB_9" name="RegistrationDetails" multiplicity="ExactlyOne" definitionRef="registrationdetails.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__n8OpB_0" name="UniversityAdmission" autoComplete="true">
+        <planItem id="pi__n8OpB_2" name="Counselling" definitionRef="_n8OpB_2" entryCriteriaRefs="crit__n8OpB_0"/>
+        <planItem id="pi__n8OpB_4" name="Admission " definitionRef="_n8OpB_4" entryCriteriaRefs="crit__n8OpB_1"/>
+        <planItem id="pi__n8OpB_0" name="VET Registration" definitionRef="_n8OpB_0"/>
+        <sentry id="crit__n8OpB_0" name="Sentry_0">
+            <planItemOnPart id="_n8OpB_6" name="PlanItemOnPart_0" sourceRef="pi__n8OpB_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__n8OpB_1" name="Sentry_1">
+            <planItemOnPart id="_n8OpB_7" name="PlanItemOnPart_1" sourceRef="pi__n8OpB_2">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <humanTask id="ht__n8OpB_0" name="StudentRegister" isBlocking="true"/>
+        <stage id="_n8OpB_2" name="Counselling" autoComplete="true"/>
+        <stage id="_n8OpB_4" name="Admission " autoComplete="true"/>
+        <stage id="_n8OpB_0" name="VET Registration" autoComplete="true">
+            <planItem id="pi_ht__n8OpB_0" name="StudentRegister" definitionRef="ht__n8OpB_0"/>
+        </stage>
+    </casePlanModel>
+    <caseRoles id="_n8OpB_8" name="Student"/>
+    <caseRoles id="_n8OpB_10" name="UniversityStaff"/>
+    <caseRoles id="_n8OpB_11" name="UniversityProfessor"/>
+</case>

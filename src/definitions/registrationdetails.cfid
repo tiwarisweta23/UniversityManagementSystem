@@ -1,0 +1,9 @@
+<caseFileItemDefinition name="registrationdetails" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="UserId" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="Password" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="Name" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="ContactNo" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="CourseApplyingFor" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="Qualification" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="FeePaid" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

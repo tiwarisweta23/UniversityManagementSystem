@@ -1,0 +1,51 @@
+<case id="IncidentManagement1.case" name="IncidentManagement1" description="Retrying Incident Management" guid="_CNj0g">
+    <caseFileModel/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+	"schema": {
+		"title": "Incident",
+		"type": "object",
+		"required": "Incident",
+		"properties": {
+			"Incident": {
+				"title": "Incident",
+				"type": "object",
+				"properties": {
+					"IncidentTitle": {
+						"type": "string",
+						"title": "Title of Incident"
+					},
+					"IncidentDescription": {
+						"type": "string",
+						"title": "Full Detail of Incident"
+					},
+					"IncidentType": {
+						"title": "Incident Type",
+						"type": "string",
+						"enumNames": [
+							"Return Order",
+							"Report missing item",
+							"Change delivery Address",
+							"Cancel Order"
+						],
+						"enum": [
+							"Return_order",
+							"Report_missing_item",
+							"Change_delivery_address",
+							"Cancel_order"
+						]
+					}
+				}
+			}
+
+
+		}
+
+
+	}
+
+
+
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

@@ -1,4 +1,4 @@
-<case id="travelrequest.case" name="travelrequest" description="Travel Request">
+<case id="travelrequest.case" name="travelrequest" description="Travel Request" guid="_KOz1c">
     <caseFileModel>
         <caseFileItem id="cfi_csKsD_0" name="TravelRequest" multiplicity="ExactlyOne" definitionRef="travelrequest.cfid">
             <children>
@@ -22,14 +22,86 @@
         <caseFileItem id="cfi_csgxw_7" name="TravelStatus" multiplicity="ZeroOrOne" definitionRef="travelstatus.cfid"/>
     </caseFileModel>
     <casePlanModel id="cm_travelrequest.case_travelrequest_0" name="Travel Request" autoComplete="true" exitCriteriaRefs="cm_csEae_324">
-        <planningTable id="pt_cm_undefined_3">
-            <discretionaryItem authorizedRoleRefs="role_csKsD_1" id="cm_csgxw_215" name="Select approver manually" definitionRef="pid_cm_csgxw_215"/>
-        </planningTable>
         <planItem id="cm_cs9Q0_205" name="View Travel request" definitionRef="pid_cm_cs9Q0_205"/>
+        <planItem id="cm_cs9Q0_207" name="Approve and Generate Travel Order" definitionRef="pid_cm_cs9Q0_207"/>
+        <planItem id="cm_csgxw_213" name="Request Submitted" definitionRef="pid_cm_csgxw_213" entryCriteriaRefs="cm_csGrn_388"/>
+        <planItem id="cm_csgxw_219" name="Approved" definitionRef="pid_cm_csgxw_219" entryCriteriaRefs="cm_csgxw_222"/>
+        <planItem id="cm_csgxw_220" name="Disapproved" definitionRef="pid_cm_csgxw_220" entryCriteriaRefs="cm_csgxw_221"/>
+        <planItem id="cm_csgxw_223" name="Travel Arrangements" definitionRef="pid_cm_csgxw_223" entryCriteriaRefs="cm_csgxw_225" exitCriteriaRefs="cm_cskek_645"/>
+        <planItem id="cm_csgxw_228" name="Send approval to requestor" definitionRef="pid_cm_csgxw_228" entryCriteriaRefs="cm_css9P_478 cm_csgxw_230"/>
+        <planItem id="cm_csEae_323" name="Cancel Travel request" definitionRef="pid_cm_csEae_323"/>
+        <planItem id="cm_csSAF_389" name="Check prerequisites" definitionRef="pid_cm_csSAF_389"/>
+        <sentry id="cm_csGrn_388">
+            <planItemOnPart id="ref_id_cm_cs9Q0_205" sourceRef="cm_cs9Q0_205">
+                <standardEvent>start</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="cm_csgxw_222">
+            <ifPart contextRef="cfi_csgxw_6">
+                <condition language="spel">
+                    <body>
+                        <![CDATA[
+                            Approval.Status == "approved"
+                        ]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="ref_id_cm_cs9Q0_207" sourceRef="cm_cs9Q0_207">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+            <planItemOnPart id="ref_id_cm_csSAF_389" sourceRef="cm_csSAF_389">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="cm_csgxw_221">
+            <ifPart contextRef="cfi_csgxw_6">
+                <condition language="spel">
+                    <body>
+                        <![CDATA[
+                            Approval.Status == "disapproved"
+                        ]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="ref_id_cm_cs9Q0_207" sourceRef="cm_cs9Q0_207">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="cm_csgxw_225">
+            <planItemOnPart id="ref_id_cm_csgxw_219" sourceRef="cm_csgxw_219">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="cm_cskek_645">
+            <planItemOnPart id="ref_id_cm_csjTZ_642" sourceRef="cm_csjTZ_642">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+            <planItemOnPart id="ref_id_cm_csgxw_226" sourceRef="cm_csgxw_226">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="cm_css9P_478">
+            <planItemOnPart id="ref_id_cm_csgxw_219" sourceRef="cm_csgxw_219">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="cm_csgxw_230">
+            <planItemOnPart id="ref_id_cm_csgxw_220" sourceRef="cm_csgxw_220">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="cm_csEae_324">
+            <planItemOnPart id="ref_id_cm_csEae_323" sourceRef="cm_csEae_323">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <planningTable id="pt_cm_undefined_3">
+            <discretionaryItem id="cm_csgxw_215" name="Select approver manually" definitionRef="pid_cm_csgxw_215" authorizedRoleRefs="role_csKsD_1"/>
+        </planningTable>
         <humanTask id="pid_cm_cs9Q0_205" name="View Travel request" isBlocking="true" performerRef="role_csKsD_1">
             <inputs id="inTP_cm_cs9Q0_205_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
-            <extensionElements mustUnderstand="false" xmlns:cafienne="org.cafienne">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="managetravelrequest.humantask">
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="managetravelrequest.humantask">
                     <parameterMapping id="inPM_cm_csMh4_6_0" sourceRef="inTP_cm_cs9Q0_205_0" targetRef="TravelRequest"/>
                     <parameterMapping id="inPM_cm_csMh4_6_1" sourceRef="inTP_cm_cs9Q0_205_0" targetRef="Assignee">
                         <transformation language="spel">
@@ -52,51 +124,11 @@
                 </cafienne:implementation>
             </extensionElements>
         </humanTask>
-        <planItem id="cm_cs9Q0_207" name="Approve and Generate Travel Order" definitionRef="pid_cm_cs9Q0_207"/>
-        <stage id="pid_cm_cs9Q0_207" name="Approve and Generate Travel Order" autoComplete="true">
-            <planItem id="cm_csgxw_208" name="Approve Travel request" definitionRef="pid_cm_csgxw_208"/>
-            <planItem id="cm_csgxw_210" name="Create Travel Order" definitionRef="pid_cm_csgxw_210" entryCriteriaRefs="cm_csgxw_212"/>
-            <sentry id="cm_csgxw_212">
-                <ifPart contextRef="cfi_csgxw_6">
-                    <condition language="spel">
-                        <body>
-                            <![CDATA[
-                                Approval.Status == "approved"
-                            ]]>
-                        </body>
-                    </condition>
-                </ifPart>
-                <planItemOnPart sourceRef="cm_csgxw_208" id="ref_id_cm_csgxw_208">
-                    <standardEvent>complete</standardEvent>
-                </planItemOnPart>
-            </sentry>
-            <planItem id="cm_cs3yg_479" name="Budget allocation" definitionRef="pid_cm_cs3yg_479" entryCriteriaRefs="cm_cs3yg_481"/>
-            <sentry id="cm_cs3yg_481">
-                <ifPart contextRef="cfi_csKsD_0">
-                    <condition language="spel">
-                        <body>
-                            <![CDATA[
-                                1 == 0
-                            ]]>
-                        </body>
-                    </condition>
-                </ifPart>
-                <planItemOnPart sourceRef="cm_csgxw_210" id="ref_id_cm_csgxw_210">
-                    <standardEvent>complete</standardEvent>
-                </planItemOnPart>
-            </sentry>
-            <planItem id="cm_cs3yg_487" name="Send Notification to Approver" definitionRef="pid_cm_cs3yg_487" entryCriteriaRefs="cm_cs3yg_489"/>
-            <sentry id="cm_cs3yg_489">
-                <planItemOnPart sourceRef="cm_csgxw_208" id="ref_id_cm_csgxw_208">
-                    <standardEvent>start</standardEvent>
-                </planItemOnPart>
-            </sentry>
-        </stage>
         <humanTask id="pid_cm_csgxw_208" name="Approve Travel request" isBlocking="true" performerRef="role_csKsD_0">
             <inputs id="inTP_cm_csgxw_208_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
             <outputs id="outTP_cm_csgxw_208_0" name="Approval" bindingRef="cfi_csgxw_6"/>
-            <extensionElements mustUnderstand="false" xmlns:cafienne="org.cafienne">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="approvetravelrequest.humantask">
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="approvetravelrequest.humantask">
                     <parameterMapping id="inPM_cm_cslsq_10_0" sourceRef="inTP_cm_csgxw_208_0" targetRef="TravelRequest_2"/>
                     <parameterMapping id="inPM_cm_cslsq_10_1" sourceRef="inTP_cm_csgxw_208_0" targetRef="DueDate_2">
                         <transformation language="spel">
@@ -123,8 +155,8 @@
         <humanTask id="pid_cm_csgxw_210" name="Create Travel Order" isBlocking="true" performerRef="role_csKsD_2">
             <inputs id="inTP_cm_csgxw_210_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
             <outputs id="outTP_cm_csgxw_210_0" name="Project" bindingRef="cfi_cs9Q0_5"/>
-            <extensionElements mustUnderstand="false" xmlns:cafienne="org.cafienne">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="createtravelpurchaseorder.humantask">
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="createtravelpurchaseorder.humantask">
                     <parameterMapping id="inPM_cm_csMHr_12_0" sourceRef="inTP_cm_csgxw_210_0" targetRef="TravelRequest_3"/>
                     <parameterMapping id="inPM_cm_csMHr_12_1" sourceRef="inTP_cm_csgxw_210_0" targetRef="DueDate_3">
                         <transformation language="spel">
@@ -136,6 +168,51 @@
                         </transformation>
                     </parameterMapping>
                     <parameterMapping id="outPM_cm_csMHr_12_0" sourceRef="Project_3" targetRef="outTP_cm_csgxw_210_0"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="pid_cm_cs3yg_484" name="Arrange Visa and ESTA" isBlocking="true" performerRef="role_csKsD_1">
+            <inputs id="inTP_cm_csZvZ_679_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="arrangevisa.humantask">
+                    <parameterMapping id="inPM_cm_csZvZ_679_0" sourceRef="inTP_cm_csZvZ_679_0" targetRef="Assignee">
+                        <transformation language="spel">
+                            <body>
+                                <![CDATA[
+                                    TravelRequest.TravellerDetails.Requestor.toLowerCase()
+                                ]]>
+                            </body>
+                        </transformation>
+                    </parameterMapping>
+                    <parameterMapping id="inPM_cm_csEQz_36_1" sourceRef="inTP_cm_csZvZ_679_0" targetRef="TravelRequest"/>
+                    <parameterMapping id="inPM_cm_csW5f_36_2" sourceRef="inTP_cm_csZvZ_679_0" targetRef="DueDate5">
+                        <transformation language="spel">
+                            <body>
+                                <![CDATA[
+                                    (T(java.time.LocalDate).parse(TravelRequest.TravelDetails.DepartureDate).atStartOfDay().toInstant(T(java.time.ZoneOffset).UTC)).toString()
+                                ]]>
+                            </body>
+                        </transformation>
+                    </parameterMapping>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="pid_cm_csgxw_215" name="Select approver manually" isBlocking="true" performerRef="role_csKsD_2">
+            <inputs id="inTP_cm_csgxw_215_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
+            <outputs id="outTP_cm_cs24h_12_0" name="Project" bindingRef="cfi_cs9Q0_5"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="manuallysetapprover.humantask">
+                    <parameterMapping id="inPM_cm_csd2I_4_0" sourceRef="inTP_cm_csgxw_215_0" targetRef="TravelRequest_1"/>
+                    <parameterMapping id="inPM_cm_csd2I_4_1" sourceRef="inTP_cm_csgxw_215_0" targetRef="DueDate_1">
+                        <transformation language="spel">
+                            <body>
+                                <![CDATA[
+                                    (T(java.time.LocalDate).parse(TravelRequest.TravelDetails.DepartureDate).atStartOfDay().toInstant(T(java.time.ZoneOffset).UTC).minus(1, T(java.time.temporal.ChronoUnit).DAYS)).toString()
+                                ]]>
+                            </body>
+                        </transformation>
+                    </parameterMapping>
+                    <parameterMapping id="outPM_cm_csd2I_4_0" sourceRef="Project_1" targetRef="outTP_cm_cs24h_12_0"/>
                 </cafienne:implementation>
             </extensionElements>
         </humanTask>
@@ -229,72 +306,6 @@
                 </transformation>
             </parameterMapping>
         </processTask>
-        <planItem id="cm_csgxw_213" name="Request Submitted" definitionRef="pid_cm_csgxw_213" entryCriteriaRefs="cm_csGrn_388"/>
-        <sentry id="cm_csGrn_388">
-            <planItemOnPart sourceRef="cm_cs9Q0_205" id="ref_id_cm_cs9Q0_205">
-                <standardEvent>start</standardEvent>
-            </planItemOnPart>
-        </sentry>
-        <milestone id="pid_cm_csgxw_213" name="Request Submitted"/>
-        <planItem id="cm_csgxw_219" name="Approved" definitionRef="pid_cm_csgxw_219" entryCriteriaRefs="cm_csgxw_222"/>
-        <sentry id="cm_csgxw_222">
-            <ifPart contextRef="cfi_csgxw_6">
-                <condition language="spel">
-                    <body>
-                        <![CDATA[
-                            Approval.Status == "approved"
-                        ]]>
-                    </body>
-                </condition>
-            </ifPart>
-            <planItemOnPart sourceRef="cm_cs9Q0_207" id="ref_id_cm_cs9Q0_207">
-                <standardEvent>complete</standardEvent>
-            </planItemOnPart>
-            <planItemOnPart sourceRef="cm_csSAF_389" id="ref_id_cm_csSAF_389">
-                <standardEvent>complete</standardEvent>
-            </planItemOnPart>
-        </sentry>
-        <milestone id="pid_cm_csgxw_219" name="Approved"/>
-        <planItem id="cm_csgxw_220" name="Disapproved" definitionRef="pid_cm_csgxw_220" entryCriteriaRefs="cm_csgxw_221"/>
-        <sentry id="cm_csgxw_221">
-            <ifPart contextRef="cfi_csgxw_6">
-                <condition language="spel">
-                    <body>
-                        <![CDATA[
-                            Approval.Status == "disapproved"
-                        ]]>
-                    </body>
-                </condition>
-            </ifPart>
-            <planItemOnPart sourceRef="cm_cs9Q0_207" id="ref_id_cm_cs9Q0_207">
-                <standardEvent>complete</standardEvent>
-            </planItemOnPart>
-        </sentry>
-        <milestone id="pid_cm_csgxw_220" name="Disapproved"/>
-        <planItem id="cm_csgxw_223" name="Travel Arrangements" definitionRef="pid_cm_csgxw_223" entryCriteriaRefs="cm_csgxw_225" exitCriteriaRefs="cm_cskek_645"/>
-        <sentry id="cm_csgxw_225">
-            <planItemOnPart sourceRef="cm_csgxw_219" id="ref_id_cm_csgxw_219">
-                <standardEvent>occur</standardEvent>
-            </planItemOnPart>
-        </sentry>
-        <sentry id="cm_cskek_645">
-            <planItemOnPart sourceRef="cm_csjTZ_642" id="ref_id_cm_csjTZ_642">
-                <standardEvent>complete</standardEvent>
-            </planItemOnPart>
-            <planItemOnPart sourceRef="cm_csgxw_226" id="ref_id_cm_csgxw_226">
-                <standardEvent>complete</standardEvent>
-            </planItemOnPart>
-        </sentry>
-        <stage id="pid_cm_csgxw_223" name="Travel Arrangements" autoComplete="false">
-            <planItem id="cm_csgxw_226" name="Email travel office" definitionRef="pid_cm_csgxw_226"/>
-            <planItem id="cm_csjTZ_640" name="Generate Travel Order" definitionRef="pid_cm_csjTZ_640"/>
-            <planItem id="cm_csjTZ_642" name="Email Travel Order" definitionRef="pid_cm_csjTZ_642" entryCriteriaRefs="cm_csjTZ_644"/>
-            <sentry id="cm_csjTZ_644">
-                <planItemOnPart sourceRef="cm_csjTZ_640" id="ref_id_cm_csjTZ_640">
-                    <standardEvent>complete</standardEvent>
-                </planItemOnPart>
-            </sentry>
-        </stage>
         <processTask id="pid_cm_csgxw_226" name="Email travel office" isBlocking="true" processRef="emailtravelofffice.process">
             <inputs id="inTP_cm_csTEb_966_4" name="travelrequest" bindingRef="cfi_csKsD_0"/>
             <parameterMapping id="inPM_cm_csTEb_966_5" sourceRef="inTP_cm_csTEb_966_4" targetRef="destinationCountry">
@@ -464,17 +475,6 @@
                 </transformation>
             </parameterMapping>
         </processTask>
-        <planItem id="cm_csgxw_228" name="Send approval to requestor" definitionRef="pid_cm_csgxw_228" entryCriteriaRefs="cm_css9P_478 cm_csgxw_230"/>
-        <sentry id="cm_css9P_478">
-            <planItemOnPart sourceRef="cm_csgxw_219" id="ref_id_cm_csgxw_219">
-                <standardEvent>occur</standardEvent>
-            </planItemOnPart>
-        </sentry>
-        <sentry id="cm_csgxw_230">
-            <planItemOnPart sourceRef="cm_csgxw_220" id="ref_id_cm_csgxw_220">
-                <standardEvent>occur</standardEvent>
-            </planItemOnPart>
-        </sentry>
         <processTask id="pid_cm_csgxw_228" name="Send approval to requestor" isBlocking="true" processRef="emailrequestor.process">
             <inputs id="inTP_cm_csjTZ_617_2" name="travelrequest" bindingRef="cfi_csKsD_0"/>
             <inputs id="inTP_cm_csjTZ_617_3" name="approval" bindingRef="cfi_csgxw_6"/>
@@ -551,11 +551,70 @@
                 </transformation>
             </parameterMapping>
         </processTask>
-        <planItem id="cm_csEae_323" name="Cancel Travel request" definitionRef="pid_cm_csEae_323"/>
+        <processTask id="pid_cm_csSAF_392" name="Check travel requirements" isBlocking="true" processRef="checktravelrequirements.process">
+            <inputs id="inTP_cm_cs6RF_34_2" name="travellers" bindingRef="cfi_cs6RF_11"/>
+            <inputs id="_KOz1c_28" name="DestinationCountry" bindingRef="cfi_csDtI_12"/>
+            <outputs id="outTP_cm_csSAF_392_1" name="traveller_requirements"/>
+            <parameterMapping id="_KOz1c_27" targetRef="outTP_cm_csSAF_392_1"/>
+            <parameterMapping id="_KOz1c_6" sourceRef="_KOz1c_28" targetRef="destinationCountry"/>
+            <parameterMapping id="_KOz1c_7" sourceRef="inTP_cm_cs6RF_34_2" targetRef="travellers"/>
+        </processTask>
+        <milestone id="pid_cm_csgxw_213" name="Request Submitted"/>
+        <milestone id="pid_cm_csgxw_219" name="Approved"/>
+        <milestone id="pid_cm_csgxw_220" name="Disapproved"/>
         <userEvent id="pid_cm_csEae_323" name="Cancel Travel request" authorizedRoleRefs="role_csKsD_1 role_csKsD_0"/>
-        <planItem id="cm_csSAF_389" name="Check prerequisites" definitionRef="pid_cm_csSAF_389"/>
+        <stage id="pid_cm_cs9Q0_207" name="Approve and Generate Travel Order" autoComplete="true">
+            <planItem id="cm_csgxw_208" name="Approve Travel request" definitionRef="pid_cm_csgxw_208"/>
+            <planItem id="cm_csgxw_210" name="Create Travel Order" definitionRef="pid_cm_csgxw_210" entryCriteriaRefs="cm_csgxw_212"/>
+            <planItem id="cm_cs3yg_479" name="Budget allocation" definitionRef="pid_cm_cs3yg_479" entryCriteriaRefs="cm_cs3yg_481"/>
+            <planItem id="cm_cs3yg_487" name="Send Notification to Approver" definitionRef="pid_cm_cs3yg_487" entryCriteriaRefs="cm_cs3yg_489"/>
+            <sentry id="cm_csgxw_212">
+                <ifPart contextRef="cfi_csgxw_6">
+                    <condition language="spel">
+                        <body>
+                            <![CDATA[
+                                Approval.Status == "approved"
+                            ]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="ref_id_cm_csgxw_208" sourceRef="cm_csgxw_208">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="cm_cs3yg_481">
+                <ifPart contextRef="cfi_csKsD_0">
+                    <condition language="spel">
+                        <body>
+                            <![CDATA[
+                                1 == 0
+                            ]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="ref_id_cm_csgxw_210" sourceRef="cm_csgxw_210">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="cm_cs3yg_489">
+                <planItemOnPart id="ref_id_cm_csgxw_208" sourceRef="cm_csgxw_208">
+                    <standardEvent>start</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+        <stage id="pid_cm_csgxw_223" name="Travel Arrangements" autoComplete="true">
+            <planItem id="cm_csgxw_226" name="Email travel office" definitionRef="pid_cm_csgxw_226"/>
+            <planItem id="cm_csjTZ_640" name="Generate Travel Order" definitionRef="pid_cm_csjTZ_640"/>
+            <planItem id="cm_csjTZ_642" name="Email Travel Order" definitionRef="pid_cm_csjTZ_642" entryCriteriaRefs="cm_csjTZ_644"/>
+            <sentry id="cm_csjTZ_644">
+                <planItemOnPart id="ref_id_cm_csjTZ_640" sourceRef="cm_csjTZ_640">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
         <stage id="pid_cm_csSAF_389" name="Check prerequisites" autoComplete="true">
             <planItem id="cm_csSAF_392" name="Check travel requirements" definitionRef="pid_cm_csSAF_392" entryCriteriaRefs="cm_cs3yg_483"/>
+            <planItem id="cm_cs3yg_484" name="Arrange Visa and ESTA" definitionRef="pid_cm_cs3yg_484" entryCriteriaRefs="cm_cs3yg_486"/>
             <sentry id="cm_cs3yg_483">
                 <ifPart contextRef="cfi_csKsD_0">
                     <condition language="spel">
@@ -567,7 +626,6 @@
                     </condition>
                 </ifPart>
             </sentry>
-            <planItem id="cm_cs3yg_484" name="Arrange Visa and ESTA" definitionRef="pid_cm_cs3yg_484" entryCriteriaRefs="cm_cs3yg_486"/>
             <sentry id="cm_cs3yg_486">
                 <ifPart contextRef="cfi_csKsD_0">
                     <condition language="spel">
@@ -581,66 +639,12 @@ TravelRequest.TravelDetails.Destination[0].Country == "US"
                 </ifPart>
             </sentry>
         </stage>
-        <processTask id="pid_cm_csSAF_392" name="Check travel requirements" isBlocking="true" processRef="checktravelrequirements.process">
-            <inputs id="inTP_cm_cs6RF_34_2" name="travellers" bindingRef="cfi_cs6RF_11"/>
-            <outputs id="outTP_cm_csSAF_392_1" name="traveller_requirements"/>
-        </processTask>
-        <humanTask id="pid_cm_cs3yg_484" name="Arrange Visa and ESTA" isBlocking="true" performerRef="role_csKsD_1">
-            <inputs id="inTP_cm_csZvZ_679_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
-            <extensionElements mustUnderstand="false" xmlns:cafienne="org.cafienne">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="arrangevisa.humantask">
-                    <parameterMapping id="inPM_cm_csZvZ_679_0" sourceRef="inTP_cm_csZvZ_679_0" targetRef="Assignee">
-                        <transformation language="spel">
-                            <body>
-                                <![CDATA[
-                                    TravelRequest.TravellerDetails.Requestor.toLowerCase()
-                                ]]>
-                            </body>
-                        </transformation>
-                    </parameterMapping>
-                    <parameterMapping id="inPM_cm_csEQz_36_1" sourceRef="inTP_cm_csZvZ_679_0" targetRef="TravelRequest"/>
-                    <parameterMapping id="inPM_cm_csW5f_36_2" sourceRef="inTP_cm_csZvZ_679_0" targetRef="DueDate5">
-                        <transformation language="spel">
-                            <body>
-                                <![CDATA[
-                                    (T(java.time.LocalDate).parse(TravelRequest.TravelDetails.DepartureDate).atStartOfDay().toInstant(T(java.time.ZoneOffset).UTC)).toString()
-                                ]]>
-                            </body>
-                        </transformation>
-                    </parameterMapping>
-                </cafienne:implementation>
-            </extensionElements>
-        </humanTask>
-        <sentry id="cm_csEae_324">
-            <planItemOnPart sourceRef="cm_csEae_323" id="ref_id_cm_csEae_323">
-                <standardEvent>occur</standardEvent>
-            </planItemOnPart>
-        </sentry>
-        <humanTask id="pid_cm_csgxw_215" name="Select approver manually" isBlocking="true" performerRef="role_csKsD_2">
-            <inputs id="inTP_cm_csgxw_215_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
-            <outputs id="outTP_cm_cs24h_12_0" name="Project" bindingRef="cfi_cs9Q0_5"/>
-            <extensionElements mustUnderstand="false" xmlns:cafienne="org.cafienne">
-                <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition" humanTaskRef="manuallysetapprover.humantask">
-                    <parameterMapping id="inPM_cm_csd2I_4_0" sourceRef="inTP_cm_csgxw_215_0" targetRef="TravelRequest_1"/>
-                    <parameterMapping id="inPM_cm_csd2I_4_1" sourceRef="inTP_cm_csgxw_215_0" targetRef="DueDate_1">
-                        <transformation language="spel">
-                            <body>
-                                <![CDATA[
-                                    (T(java.time.LocalDate).parse(TravelRequest.TravelDetails.DepartureDate).atStartOfDay().toInstant(T(java.time.ZoneOffset).UTC).minus(1, T(java.time.temporal.ChronoUnit).DAYS)).toString()
-                                ]]>
-                            </body>
-                        </transformation>
-                    </parameterMapping>
-                    <parameterMapping id="outPM_cm_csd2I_4_0" sourceRef="Project_1" targetRef="outTP_cm_cs24h_12_0"/>
-                </cafienne:implementation>
-            </extensionElements>
-        </humanTask>
     </casePlanModel>
     <caseRoles id="role_csKsD_0" name="Approver" description="Approver of the Travel Request"/>
     <caseRoles id="role_csKsD_2" name="PersonalAssistant" description="Personal Assistant"/>
     <caseRoles id="role_csKsD_1" name="Requestor" description="Requestor of the Travel Request"/>
     <input id="cs9Q0_inCPs_0" name="TravelRequest" bindingRef="cfi_csKsD_0"/>
-    <extensionElements>
+    <extensionElements mustUnderstand="false">
         <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
   "schema": {
       "type": "object",
